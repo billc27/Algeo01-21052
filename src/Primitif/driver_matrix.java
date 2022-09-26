@@ -2,12 +2,11 @@ package Primitif;
 
 
 public class driver_matrix {
-    // static MatrixOp op = new MatrixOp();
     public static void main(String[] args) {
 
         Matrix mnew = new Matrix(3, 3);
-        mnew.readMatrix(3, 3);
-        mnew.displayMatrix();
+        // mnew.readMatrix(3, 3);
+        // mnew.displayMatrix();
         /*
         mnew.getRow(2);
         mnew.getCol(1);
@@ -37,11 +36,11 @@ public class driver_matrix {
         m.readMatrix(3, 3);
         Matrix m1 = new Matrix(3, 3);
         m1 = m.copyMatrix();
-        m1 = Cofactor(m1);
+        MatrixOp.MatrixHasil(m1).displayMatrix();
+        MatrixOp.MatrixOriginal(m1).displayMatrix();
+        m1 = MatrixOp.inversAdj(m1);
         m1.Transpose().displayMatrix();
+
     }
 
-    private static Matrix inversAdj(Matrix m1) {
-        return null;
-    }
 }

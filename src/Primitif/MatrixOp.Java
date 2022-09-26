@@ -1,9 +1,8 @@
 package Primitif;
-import Matrix;
 
-public class MatrixOp{
-
-    public Matrix minorMatrix(Matrix m1, int i, int j) { // Mengembalikan matriks minor
+public class MatrixOp {
+// ********************************** INVERSE ************************************************
+    public static Matrix minorMatrix(Matrix m1, int i, int j) { // Mengembalikan matriks minor
         Matrix mOut = new Matrix(m1.rows - 1, m1.cols - 1);
         int m, n;
         mOut.rows = m1.rows - 1;
@@ -29,16 +28,16 @@ public class MatrixOp{
         return mOut;
     }
 
-    public double detCofactor(Matrix M) { // Mengembalikan nilai determinan dengan metode kofaktor
+    public static double detCofactor(Matrix M) { // Mengembalikan nilai determinan dengan metode kofaktor
         int sign;
         int m;
         double det;
-        Matrix mTemp = new Matrix(M.row - 1, M.col - 1);
+        Matrix mTemp = new Matrix(M.rows - 1, M.cols - 1);
 
         sign = 1;
         det = 0;
-        if (M.row != 1) {
-            for (m = 0; m < M.row; m++) {
+        if (M.rows != 1) {
+            for (m = 0; m < M.rows; m++) {
                 mTemp = minorMatrix(M,0, m);
                 det += (detCofactor(mTemp) * M.matrix[0][m] * sign);
                 sign *= (-1);
@@ -49,11 +48,11 @@ public class MatrixOp{
         return det;
     }
  
-    public double valCofactor(Matrix M,int i, int j) { // Mengembalikan nilai kofaktor
-        if ((M.row == 1) && (M.col == 1)) {
+    public static double valCofactor(Matrix M,int i, int j) { // Mengembalikan nilai kofaktor
+        if ((M.rows == 1) && (M.cols == 1)) {
             return 1;
         } else {
-            Matrix mOut = new Matrix(M.row - 1, M.col - 1);
+            Matrix mOut = new Matrix(M.rows - 1, M.cols - 1);
             mOut = minorMatrix(M,i, j);
             if ((i + j) % 2 == 1) {
                 return detCofactor(mOut) * (-1);
@@ -65,7 +64,7 @@ public class MatrixOp{
     
     
     //Menghasilkan hasil matrix dari kofaktor
-    public Matrix Cofactor(Matrix m) {
+    public static Matrix Cofactor(Matrix m) {
         Matrix mOut = new Matrix(m.rows, m.cols);
         int i, j;
 
@@ -77,7 +76,7 @@ public class MatrixOp{
         return mOut;
     }
 
-    public Matrix inversAdj(Matrix M) {
+    public static Matrix inversAdj(Matrix M) {
         int i, j;
         Matrix kof = Cofactor(M);
         Matrix mOut = kof.Transpose();
@@ -94,10 +93,24 @@ public class MatrixOp{
         }
         return mOut;
     }
+// ****************************** Augmented Matrix *******************************
+    public static Matrix MatrixOriginal(Matrix m){
+        Matrix mOut = new Matrix(m.rows,m.cols-1);
+        int i,j;
+        for (i=0;i<mOut.rows;i++){
+            for (j=0; j<mOut.cols;j++){
+                mOut.setElmt(i,j, m.getElmt(i,j));
+            }
+        }
+        return mOut;
+    }
 
-    public static void main(String[] args) {
-        Matrix mnew = new Matrix(3, 3);
-        mnew.readMatrix(3, 3);
-        mnew=Cofactor(mnew);
+    public static Matrix MatrixHasil(Matrix m){
+        Matrix mOut = new Matrix(m.rows, 1);
+        int i;
+        for (i=0;i<mOut.rows;i++){
+            mOut.setElmt(i,0, m.getElmt(i,m.getCol()-1));
+        }
+        return mOut;
     }
 }
