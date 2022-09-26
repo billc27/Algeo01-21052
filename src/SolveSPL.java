@@ -9,10 +9,17 @@ public class SolveSPL {
     static MatrixOp op = new MatrixOp();
     
     public static void inverseMethod(Matrix m){
-        Matrix mOut = new Matrix(m.getRow(), m.getCol());
+        Matrix mOri = MatrixOp.MatrixOriginal(m);
+        Matrix mHasil = MatrixOp.MatrixHasil(m);
         // Matrix inv = Matrix.inversAdj();
-        int i, j;
-        
-
+        int i;
+        Matrix mOut = new Matrix(m.getRow(), 1);
+        mOri.displayMatrix();
+        mHasil.displayMatrix();
+        mOut = MatrixOp.multiplyMatrix(MatrixOp.inversAdj(mOri), mHasil);
+        mOut.displayMatrix();
+        for (i = 0; i < mOut.getRow(); i++) {
+            System.out.println("x"+(i+1)+" = " +(mOut.getElmt(i,0)));
+        }
     }
 }

@@ -193,7 +193,7 @@ public class Matrix {
     
     //transpose matrix
     public Matrix Transpose() {
-        Matrix m= new Matrix(this.rows,this.cols);
+        Matrix m= new Matrix(this.cols,this.rows);
         int i, j;
         for (i = 0; i < this.rows; i++) {
             for (j = 0; j < this.cols; j++) {
