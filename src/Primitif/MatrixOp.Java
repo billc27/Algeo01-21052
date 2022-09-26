@@ -113,4 +113,41 @@ public class MatrixOp {
         }
         return mOut;
     }
+         
+    // ************************* Operasi Lain ***************************
+    public static Matrix plusminusMatrix(Matrix m1, Matrix m2, boolean value) {
+        int i, j;
+        Matrix mOut  = new Matrix(m1.rows, m1.cols);
+        if (value) {
+            for (i = 0; i < mOut.rows; i++) {
+                for(j = 0; j < mOut.cols; j++) {
+                    mOut.matrix[i][j] = m1.matrix[i][j] + m2.matrix[i][j];
+                }
+            } 
+        } else {
+            for (i = 0; i < mOut.rows; i++) {
+                for(j = 0; j < mOut.cols; j++) {
+                    mOut.matrix[i][j] = m1.matrix[i][j] - m2.matrix[i][j];
+                }
+            }
+        }
+        return mOut;
+    }
+
+    public static Matrix multiplyMatrix(Matrix m1, Matrix m2) {
+        Matrix mOut = new Matrix(m1.rows, m2.cols);
+            int i, j, k;
+            double result;
+            for (i = 0; i < m1.rows; i++) {
+                for (j = 0; j < m2.cols; j++) {
+                    result = 0;
+                    for (k = 0; k < m1.cols; k++) {
+                        result += m1.matrix[i][k] * m2.matrix[k][j];
+                    }
+                    mOut.matrix[i][j] = result;
+                }
+            }
+        return mOut;
+    }
+
 }

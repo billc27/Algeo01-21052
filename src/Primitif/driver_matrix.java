@@ -38,9 +38,6 @@ public class driver_matrix {
         m1 = m.copyMatrix();
         MatrixOp.MatrixHasil(m1).displayMatrix();
         MatrixOp.MatrixOriginal(m1).displayMatrix();
-        m1 = MatrixOp.inversAdj(m1);
-        m1.Transpose().displayMatrix();
-
+        m1.displayMatrix();
     }
-
 }
