@@ -1,7 +1,8 @@
 package Primitif;
 
 public class MatrixOp {
-// ********************************** INVERSE ************************************************
+    // ********************************** INVERSE ************************************************
+    // pre-kondisi: semua input matrix merupakan matrix persegi
     public static Matrix minorMatrix(Matrix m1, int i, int j) { // Mengembalikan matriks minor
         Matrix mOut = new Matrix(m1.rows - 1, m1.cols - 1);
         int m, n;
@@ -85,7 +86,7 @@ public class MatrixOp {
         if (det == 0) {
             return null;
         }
- 
+
         for (i = 0; i < mOut.rows; i++) {
             for (j = 0; j < mOut.cols; j++) {
                 mOut.matrix[i][j] = mOut.matrix[i][j] / det;
@@ -93,24 +94,45 @@ public class MatrixOp {
         }
         return mOut;
     }
+    
+    // invers metode identitas
+    public static Matrix inversId(Matrix m) {
+        int i, j,col = m.getCol();
+        Matrix mTemp = m.copyMatrix();
+
+        mTemp.setCol(col * 2);
+        for (i = 0; i < mTemp.getRow(); i++) {
+            for (j = m.getCol(); j < mTemp.getCol(); j++) {
+                if (i + m.getCol() == j) {
+                    mTemp.setElmt(i, j, 1);
+                }
+            }
+        }
+        
+        mTemp = OBE.gaussJordan(mTemp);
+        return mTemp.copy(0, col, col, col);
+        // return mTemp;
+    }
 // ****************************** Augmented Matrix *******************************
     public static Matrix MatrixOriginal(Matrix m){
         Matrix mOut = new Matrix(m.rows,m.cols-1);
         int i,j;
-        for (i=0;i<mOut.rows;i++){
-            for (j=0; j<mOut.cols;j++){
-                mOut.setElmt(i,j, m.getElmt(i,j));
+        for (i = 0; i < mOut.rows; i++) {
+            for (j = 0; j < mOut.cols; j++) {
+                mOut.setElmt(i, j, m.getElmt(i, j));
             }
         }
+        // mOut = m.copy(0, m.getRow(), 0, m.getCol()-1);
         return mOut;
     }
 
     public static Matrix MatrixHasil(Matrix m){
         Matrix mOut = new Matrix(m.rows, 1);
         int i;
-        for (i=0;i<mOut.rows;i++){
-            mOut.setElmt(i,0, m.getElmt(i,m.getCol()-1));
+        for (i = 0; i < mOut.rows; i++) {
+            mOut.setElmt(i, 0, m.getElmt(i, m.getCol() - 1));
         }
+        // mOut = m.copy(0, m.getRow(), m.getCol()-1, m.getCol());
         return mOut;
     }
          

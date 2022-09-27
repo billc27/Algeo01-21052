@@ -26,8 +26,8 @@ public class OBE {
             }
 
             // Membuat elemen di bawah leading 1 menjadi 0
-            for (l=i+1; l<m1.rows; l++){
-                System.out.println(j);
+            for (l = i + 1; l < m1.rows; l++) {
+
                 pengali = m1.getElmt(l, j);
                 for(p=0; p<m1.cols; p++){
                     m1.setElmt(l, p, m1.getElmt(l, p) - pengali*m1.getElmt(i, p));
@@ -42,12 +42,12 @@ public class OBE {
         for (a=m1.rows-1; a>0; a--){
             // Mencari leading 1 pada baris terakhir
 
-            for (b=0; b<m1.cols; b++){
-                if(m1.getElmt(a, b)!= 0){
+            for (b = 0; b < m1.cols; b++) {
+                if (m1.getElmt(a, b) != 0) {
                     break;
                 }
             }
-            System.out.println(b);
+
             if(b>=m1.cols){ //menghandle kasus baris 0
                 b = 0;
             }

@@ -29,15 +29,17 @@ public class driver_matrix {
         //Matrix mnew3 = new Matrix(3,3);
         //mnew3 = mnew.plusminusMatrix(mnew, mnew, false);
         //mnew3.displayMatrix();
-        System.out.println(mnew.isRowZero());
-        System.out.println(mnew.isColZero());
-        Matrix m = new Matrix(2,3);
-        m.displayMatrix();
+
+        Matrix m = new Matrix(3,4);
+        
         m.readMatrix(m.getRow(), m.getCol());
-        Matrix m1 = new Matrix(2, 3);
+        Matrix m1 = new Matrix(3, 4);
         m1 = m.copyMatrix();
-        MatrixOp.MatrixHasil(m1).displayMatrix();
+        MatrixOp.inversId(MatrixOp.MatrixOriginal(m1)).displayMatrix();
+        System.out.println("hasil");
+        MatrixOp.inversAdj(MatrixOp.MatrixOriginal(m1)).displayMatrix();
         MatrixOp.MatrixOriginal(m1).displayMatrix();
+        System.out.println("ori");
         m1.Transpose().displayMatrix();
     }
 }

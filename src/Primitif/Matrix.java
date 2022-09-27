@@ -38,14 +38,25 @@ public class Matrix {
         }
     }
     
-    public Matrix copyMatrix(){
-        Matrix mOut= new Matrix(this.rows,this.cols);
+    public Matrix copyMatrix() {
+        Matrix mOut = new Matrix(this.rows, this.cols);
         int i, j;
         mOut.rows = this.rows;
         mOut.cols = this.cols;
         for (i = 0; i < this.rows; i++) {
             for (j = 0; j < this.cols; j++) {
                 mOut.matrix[i][j] = this.matrix[i][j];
+            }
+        }
+        return mOut;
+    }
+    // copy sebagian matrix 
+    public Matrix copy(int sRow, int fRow, int sCol, int fCol) {
+        int i, j;
+        Matrix mOut = new Matrix(fRow, fCol);
+        for (i = 0; i < fRow; i++) {
+            for (j = 0; j < fCol; j++) {
+                mOut.setElmt(i, j, this.getElmt(i+sRow, j+sCol));
             }
         }
         return mOut;
@@ -65,14 +76,46 @@ public class Matrix {
         }
     }
     
-// ********************* SELEKTOR ********************* 
-    //ngubah jd public
+    // ********************* SELEKTOR *********************** 
+    public void resize(int row, int col) {
+        double[][] newMat = new double[row][col];
+        int sRow,sCol;
+        if (row < this.rows){
+            sRow = row;
+        } else{ 
+            sRow = this.rows;
+        }
+        if (col< this.cols){
+            sCol = col;
+        }  else  {
+            sCol = this.cols;
+        }
+        int i, j;
+
+        for (i = 0; i < sRow; i++) {
+            for (j = 0; j < sCol; j++) {
+                newMat[i][j] = this.matrix[i][j];
+            }
+        }
+        this.rows = row;
+        this.cols = col;
+        this.matrix = newMat;
+    }
+    
     public int getCol() {
         return this.cols;
     }
 
+    public void setCol(int col) {
+        this.resize(this.rows, col);
+    }
+
     public int getRow() {
         return this.rows;
+    }
+
+    public void setRow(int row) {
+        this.resize(row, this.cols);
     }
     public double getElmt(int i, int j) {
         return this.matrix[i][j];
@@ -81,7 +124,8 @@ public class Matrix {
     public void setElmt(int i, int j, double val) {
         this.matrix[i][j] = val;
     }
-
+    
+    // ngeprint kolom / baris tertentu
     public void getCol(int i) {
         int j;
         for (j = 0; j < this.cols; j++) {
@@ -125,7 +169,7 @@ public class Matrix {
         return val;
     }
 
-    //cek apakah dari matriks ada kolom yang 0
+    // cek apakah dari matriks ada kolom yang 0
     public boolean isColZero() {
         int i, j;
         boolean col_val, val;
