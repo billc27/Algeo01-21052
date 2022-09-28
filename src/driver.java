@@ -13,5 +13,6 @@ public class driver {
         mnew.displayMatrix();
         // SolveSPL.inverseMethod(mnew);
         Bicubic.Bic(mnew).displayMatrix();
+        // System.out.println(mnew.isSegitigaAtas());
     }
 }
