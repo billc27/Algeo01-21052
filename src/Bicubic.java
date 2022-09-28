@@ -8,8 +8,7 @@ public class Bicubic {
         // pre kondisi: matrix input berupa 4x4
         int i, j, sRow = 0;
         Matrix func = new Matrix(16, 1); //matrix konversi fungsi dari matrix m
-        Matrix var = new Matrix(16, 16); //matrix variable dari tiap fungsi
-        Matrix a = new Matrix(16, 1); // matrix hasil variable 
+
         for (i = 0; i < m.getRow(); i++) {
             for (j = 0; j < m.getCol(); j++) {
                 func.setElmt(sRow, 0, m.getElmt(i, j));
@@ -17,12 +16,28 @@ public class Bicubic {
             }
         }
 
-        for(){
-
-        }
         return func;
-
     }
 
-    public static Matrix mat()
+    public static Matrix xMat() {
+        Matrix koef = new Matrix(16, 16); //matrix variable dari tiap fungsi
+        int i, j,row=0,col=0;
+        double x, y;
+
+        for (x = -1; x < 3;x++){
+            for (y = -1; y < 3; y++) {
+                col = 0;
+                for (i = 0; i < 4; i++) {
+                    for (j = 0; j < 4; j++) {
+                        koef.setElmt(row, col, Math.pow(x, i) * Math.pow(y, j));
+                        col++;
+                    }
+                }
+                row++;
+            }
+        }
+        return koef;
+    }
+    
+    // public static Matrix 
 }

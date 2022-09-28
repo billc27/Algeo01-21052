@@ -233,7 +233,6 @@ public class Matrix {
             this.matrix[i][j2] = temp;
         }
     }
-
     
     //transpose matrix
     public Matrix Transpose() {
