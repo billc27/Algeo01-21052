@@ -33,7 +33,6 @@ public class Matrix {
         this.cols = col;
         for (i = 0; i < row; i++) {
             for (j = 0; j < col; j++) {
-                System.out.print("Masukkan nilai pada baris ke-" + (i + 1) + " dan kolom ke-" + (j + 1) + ": ");
                 elmt = scanElmt.nextDouble();
                 this.matrix[i][j] = elmt;
             }
@@ -69,9 +68,9 @@ public class Matrix {
         for (i = 0; i < this.rows; i++) {
             for (j = 0; j < this.cols; j++) {
                 if (j < (this.cols - 1)) {
-                    System.out.print(this.matrix[i][j] + " ");
+                    System.out.printf("%.2f ",this.matrix[i][j]);
                 } else {
-                    System.out.print(this.matrix[i][j]);
+                    System.out.printf("%.2f",this.matrix[i][j]);
                 }
             }
             System.out.println();
