@@ -39,5 +39,27 @@ public class Bicubic {
         return koef;
     }
     
-    // public static Matrix 
+    public static Matrix inverseXmat() {
+        return MatrixOp.inversId(xMat());
+    }
+
+    public static Matrix bicubKoef(Matrix m, Matrix x) {
+        return MatrixOp.multiplyMatrix(inverseXmat(), toFuncMat(m));
+    }
+    
+    public static double bicubic(Matrix m, double x, double y) {
+        Matrix xMatrix = xMat();
+        Matrix koef = bicubKoef(m, xMatrix);
+        double val = 0;
+        int i, j, row=0;
+        
+        for (i = 0; i < 4; i++) {
+            for (j = 0; j < 4; j++) {
+                val += Math.pow(x, i) * Math.pow(y, j) * koef.getElmt(row, 0);
+                row++;
+            }
+        }
+        return val;
+    }
+
 }

@@ -10,9 +10,11 @@ public class driver {
     public static void main(String[] args) {
         Matrix mnew = new Matrix(4, 4);
         mnew.readMatrix(mnew.getRow(), mnew.getCol());
-        mnew.displayMatrix();
         // SolveSPL.inverseMethod(mnew);
-        Bicubic.Bic(mnew).displayMatrix();
+        Bicubic.inverseXmat().displayMatrix();
         // System.out.println(mnew.isSegitigaAtas());
+        double val;
+        val = Bicubic.bicubic(mnew, 0.5, 0.5);
+        System.out.println(val);
     }
 }
