@@ -4,7 +4,7 @@ package Primitif;
 public class driver_matrix {
     public static void main(String[] args) {
 
-        Matrix mnew = new Matrix(3, 3);
+        // Matrix mnew = new Matrix(3, 3);
         // mnew.readMatrix(3, 3);
         // mnew.displayMatrix();
         /*
@@ -30,16 +30,22 @@ public class driver_matrix {
         //mnew3 = mnew.plusminusMatrix(mnew, mnew, false);
         //mnew3.displayMatrix();
 
-        Matrix m = new Matrix(3,4);
+        Matrix m = new Matrix(2,3);
         
         m.readMatrix(m.getRow(), m.getCol());
-        Matrix m1 = new Matrix(3, 4);
+        Matrix m1 = new Matrix(2, 3);
         m1 = m.copyMatrix();
-        MatrixOp.inversId(MatrixOp.MatrixOriginal(m1)).displayMatrix();
-        System.out.println("hasil");
-        MatrixOp.inversAdj(MatrixOp.MatrixOriginal(m1)).displayMatrix();
-        MatrixOp.MatrixOriginal(m1).displayMatrix();
-        System.out.println("ori");
-        m1.Transpose().displayMatrix();
+        // MatrixOp.inversId(MatrixOp.MatrixOriginal(m1)).displayMatrix();
+        // System.out.println("hasil");
+        // MatrixOp.inversAdj(MatrixOp.MatrixOriginal(m1)).displayMatrix();
+        // MatrixOp.MatrixOriginal(m1).displayMatrix();
+        // System.out.println("ori");
+        // m1.Transpose().displayMatrix();
+        
+        m1 = OBE.gaussJordan(m);
+        m.displayMatrix();
+        OBE.toReducedEchelon(m);
+        m1.displayMatrix();
+        m.displayMatrix();
     }
 }
