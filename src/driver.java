@@ -8,9 +8,10 @@ import Primitif.MatrixOp;
 */
 public class driver {
     public static void main(String[] args) {
-        Matrix mnew = new Matrix(2, 3);
+        Matrix mnew = new Matrix(4, 4);
         mnew.readMatrix(mnew.getRow(), mnew.getCol());
         mnew.displayMatrix();
-        SolveSPL.inverseMethod(mnew);
+        // SolveSPL.inverseMethod(mnew);
+        Bicubic.Bic(mnew).displayMatrix();
     }
 }
