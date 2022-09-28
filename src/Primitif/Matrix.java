@@ -246,5 +246,20 @@ public class Matrix {
         }
         return m;
     }
-
+    
+    public boolean isSegitigaAtas() {
+        int i, j;
+        boolean val;
+        val = true;
+        if (this.rows == 1 || this.cols == 1) {
+            val = false;
+        } else {
+            for (i = 1; i < this.rows; i++) {
+                for (j = 0; j < i; j++) {
+                    if (this.matrix[i][j] != 0) val = false;
+                }
+            }
+        }
+        return val;
+    }
 }
