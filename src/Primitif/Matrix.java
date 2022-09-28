@@ -22,11 +22,13 @@ public class Matrix {
     }
 
     // Read Matrix
-    public void readMatrix(int row, int col) {
+    public void readMatrix() {
         double elmt;
         int i, j;
-
+        int row, col;
         Scanner scanElmt = new Scanner(System.in);
+        row = scanElmt.nextInt();
+        col = scanElmt.nextInt();
         this.rows = row;
         this.cols = col;
         for (i = 0; i < row; i++) {
