@@ -276,4 +276,20 @@ public class Matrix {
         }
         return m3;
     }
+    
+    public double countRow(Matrix mawal, int titik, int rowReg, int colReg) {
+        double sigmaRow; // Jumlah nilai x di baris
+        sigmaRow = 0;
+        int b;
+        
+        for (b = 0; b < titik; b++) {
+            if (rowReg == 0) {
+                sigmaRow += mawal.matrix[colReg-1][b]; // Mendapatkan sigma x1i
+            } else {
+                sigmaRow += mawal.matrix[rowReg-1][b]*mawal.matrix[colReg-1][b];
+            }
+            
+        }
+        return sigmaRow;
+    }
 }
