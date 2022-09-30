@@ -292,4 +292,62 @@ public class Matrix {
         }
         return sigmaRow;
     }
+    
+    public Matrix inputRegression() {
+        int var, titik;
+        Scanner scanreg = new Scanner(System.in);
+
+        // Input banyak variabel peubah
+        System.out.print("Masukkan jumlah variable peubah: ");
+        var = scanreg.nextInt();
+
+        // Input jumlah titik
+        System.out.print("Masukkan jumlah titik yang ingin dimasukkan: ");
+        titik = scanreg.nextInt();
+
+        // Isi matrix
+        Matrix mawal;
+        mawal = new Matrix(titik, var + 1);
+        double elmt;
+        int i, j;
+
+        Scanner scanElmt = new Scanner(System.in);
+        for (j = 0; j < mawal.getRow(); j++) {
+            for (i = 0; i < mawal.getCol(); i++) {
+                if (i != mawal.getCol() - 1) {
+                    System.out.print("Masukkan nilai x" + (i+1) + (j+1) +": ");
+                    elmt = scanElmt.nextDouble();
+                    mawal.matrix[j][i] = elmt;
+                } 
+                if (i == mawal.getCol() - 1) {
+                    System.out.print("Masukkan nilai y" + (j+1) + ": ");
+                    elmt = scanElmt.nextDouble();
+                    mawal.matrix[j][i] = elmt;
+                }
+            }
+        }
+        mawal = mawal.Transpose();
+        Matrix mreg;
+        mreg = new Matrix(var + 1, var + 2);
+        
+        for (i = 0; i < mreg.getRow(); i++) {
+            for (j = 0; j < mreg.getCol(); j++) {
+                if (i == 0) {
+                    if (j == 0) {
+                        mreg.matrix[i][j] = titik;
+                    } else {
+                        mreg.matrix[i][j] = countRow(mawal, titik, i, j);
+                    }
+                } else {
+                    if (j == 0) {
+                        mreg.matrix[i][j] = mreg.matrix[j][i];
+                    } else {
+                        mreg.matrix[i][j] = countRow(mawal, titik, i, j);
+                    }
+                }
+
+            }
+        }
+        return mreg;
+    }
 }
