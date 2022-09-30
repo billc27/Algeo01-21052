@@ -31,7 +31,6 @@ public class Matrix {
         this.cols = col;
         for (i = 0; i < row; i++) {
             for (j = 0; j < col; j++) {
-                // System.out.print("Masukkan nilai pada baris ke-" + (i + 1) + " dan kolom ke-" + (j + 1) + ": ");
                 elmt = scanElmt.nextDouble();
                 this.matrix[i][j] = elmt;
             }
@@ -260,5 +259,95 @@ public class Matrix {
             }
         }
         return val;
+    }
+    
+    public Matrix extendMatrix(Matrix m1, Matrix m2) {
+        Matrix m3;
+        int i, j;
+        m3 = new Matrix(m1.getRow(), m1.getCol()+m2.getCol());
+        for (i = 0; i < m1.getRow(); i++) {
+            for (j = 0; j < m1.getCol()+m2.getCol(); j++) {
+                if (j < m1.getCol()) {
+                    m3.setElmt(i, j, m1.getElmt(i, j));
+                } else {
+                    m3.setElmt(i, j, m2.getElmt(i, j - m1.getCol()));
+                }
+            }
+        }
+        return m3;
+    }
+    
+    public double countRow(Matrix mawal, int titik, int rowReg, int colReg) {
+        double sigmaRow; // Jumlah nilai x di baris
+        sigmaRow = 0;
+        int b;
+        
+        for (b = 0; b < titik; b++) {
+            if (rowReg == 0) {
+                sigmaRow += mawal.matrix[colReg-1][b]; // Mendapatkan sigma x1i
+            } else {
+                sigmaRow += mawal.matrix[rowReg-1][b]*mawal.matrix[colReg-1][b];
+            }
+            
+        }
+        return sigmaRow;
+    }
+    
+    public Matrix inputRegression() {
+        int var, titik;
+        Scanner scanreg = new Scanner(System.in);
+
+        // Input banyak variabel peubah
+        System.out.print("Masukkan jumlah variable peubah: ");
+        var = scanreg.nextInt();
+
+        // Input jumlah titik
+        System.out.print("Masukkan jumlah titik yang ingin dimasukkan: ");
+        titik = scanreg.nextInt();
+
+        // Isi matrix
+        Matrix mawal;
+        mawal = new Matrix(titik, var + 1);
+        double elmt;
+        int i, j;
+        Scanner scanElmt = new Scanner(System.in);
+        
+        for (j = 0; j < mawal.getRow(); j++) {
+            for (i = 0; i < mawal.getCol(); i++) {
+                if (i != mawal.getCol() - 1) {
+                    System.out.print("Masukkan nilai x" + (i+1) + (j+1) +": ");
+                    elmt = scanElmt.nextDouble();
+                    mawal.matrix[j][i] = elmt;
+                } 
+                if (i == mawal.getCol() - 1) {
+                    System.out.print("Masukkan nilai y" + (j+1) + ": ");
+                    elmt = scanElmt.nextDouble();
+                    mawal.matrix[j][i] = elmt;
+                }
+            }
+        }
+        mawal = mawal.Transpose();
+        Matrix mreg;
+        mreg = new Matrix(var + 1, var + 2);
+        
+        for (i = 0; i < mreg.getRow(); i++) {
+            for (j = 0; j < mreg.getCol(); j++) {
+                if (i == 0) {
+                    if (j == 0) {
+                        mreg.matrix[i][j] = titik;
+                    } else {
+                        mreg.matrix[i][j] = countRow(mawal, titik, i, j);
+                    }
+                } else {
+                    if (j == 0) {
+                        mreg.matrix[i][j] = mreg.matrix[j][i];
+                    } else {
+                        mreg.matrix[i][j] = countRow(mawal, titik, i, j);
+                    }
+                }
+
+            }
+        }
+        return mreg;
     }
 }
