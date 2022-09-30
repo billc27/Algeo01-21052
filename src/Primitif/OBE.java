@@ -33,6 +33,31 @@ public class OBE {
                 }
             }      
         }
+        // swap row
+        int left;
+        int row = 0;
+        int iterate;
+
+        for(iterate=0; iterate<mOut.getRow(); iterate++){
+            left = mOut.getCol()-1;
+            row = iterate;
+            for(i=iterate; i<mOut.getRow(); i++){
+                // finding most left leading one in the matrix
+                j = 0;
+                while(mOut.getElmt(i, j)==0 && j<mOut.getCol()-1){
+                    j++;
+                }
+                
+                if(left>j){
+                    left = j;
+                    row = i;
+                }
+            }
+            mOut.swapRow(row, iterate);
+            // for debugging purpose
+            // System.out.println(iterate);
+            // System.out.println(row);
+        }
         return mOut;
     }
     public static void toEchelon(Matrix m){ //mengubah matriks m ke dalam bentuk eselon
@@ -70,7 +95,35 @@ public class OBE {
             }      
         }
 
-        // m = m1.copyMatrix();
+        // swap row
+        int left;
+        int row = 0;
+        int iterate;
+
+        for(iterate=0; iterate<m.getRow(); iterate++){
+            left = m.getCol()-1;
+            row = iterate;
+            for(i=iterate; i<m.getRow(); i++){
+                // finding most left leading one in the matrix
+                j = 0;
+                while(m.getElmt(i, j)==0 && j<m.getCol()-1){
+                    j++;
+                }
+                
+                if(left>j){
+                    left = j;
+                    row = i;
+                }
+            }
+            m.swapRow(row, iterate);
+            // for debugging purpose
+            // System.out.println(iterate);
+            // System.out.println(row);
+        }
+
+
+
+     
     }
     public static Matrix gaussJordan(Matrix m) { //menghasilkan matriks baru m1 berupa matriks eselon tereduksi dari matriks m
         // Gauss
@@ -205,4 +258,91 @@ public class OBE {
         // }
 
     }
+    public static double detOBE(Matrix mIn){
+        int i, j, k, l, p;
+        double det; // berbeda dari gauss
+        double pembagi, pengali;
+        double peubah; // berbeda dari gauss
+        Matrix mOut;
+        mOut = mIn.copyMatrix();
+        peubah = 1; // berbeda dari gauss
+        for (i=0; i<mOut.rows; i++){
+    
+            // Mencari elemen bukan 0 pertama pada baris 1
+            pembagi = 1;
+            for (j=0; j<mOut.cols; j++){
+                if(mOut.getElmt(i, j)!= 0){
+                    pembagi = mOut.getElmt(i, j);
+                    peubah = peubah * pembagi ; // berbeda dari gauss
+                    break;
+                }
+            }
+            if(j>=mOut.cols){ //menghandle kasus baris 0
+                j = 0;
+            }
+            // Membuat leading 1 pada baris;
+            for (k=0; k<mIn.cols; k++){
+                mOut.setElmt(i, k, mOut.getElmt(i, k)/pembagi);
+            }
+
+            // Membuat elemen di bawah leading 1 menjadi 0
+            for (l = i + 1; l < mOut.rows; l++) {
+
+                pengali = mOut.getElmt(l, j);
+                for(p=0; p<mOut.cols; p++){
+                    mOut.setElmt(l, p, mOut.getElmt(l, p) - pengali*mOut.getElmt(i, p));
+                }
+            }      
+        }
+        // swap row
+        int left;
+        int row = 0;
+        int iterate;
+
+        for(iterate=0; iterate<mOut.getRow(); iterate++){
+            left = mOut.getCol()-1;
+            row = iterate;
+            for(i=iterate; i<mOut.getRow(); i++){
+                // finding most left leading one in the matrix
+                j = 0;
+                while(mOut.getElmt(i, j)==0 && j<mOut.getCol()-1){
+                    j++;
+                }
+                
+                if(left>j){
+                    left = j;
+                    row = i;
+                }
+            }
+            mOut.swapRow(row, iterate);
+            // for debugging purpose
+            // System.out.println(iterate);
+            // System.out.println(row);
+
+            if(row != iterate){
+                peubah = peubah*-1;
+            }
+        }
+
+        det = 1;
+        for(i=0; i < mOut.getRow(); i++){
+            det = det * mOut.getElmt(i, i);
+        }
+        det = det * peubah;
+        return det;
+    }
+
+
+    // public static double detOBE(Matrix m) {
+    //     double det;
+    //     Matrix m1;
+
+    //     det = 1;
+
+    //     m1 = 
+
+
+
+    //     return det;
+    // }
 }
