@@ -310,8 +310,8 @@ public class Matrix {
         mawal = new Matrix(titik, var + 1);
         double elmt;
         int i, j;
-
         Scanner scanElmt = new Scanner(System.in);
+        
         for (j = 0; j < mawal.getRow(); j++) {
             for (i = 0; i < mawal.getCol(); i++) {
                 if (i != mawal.getCol() - 1) {
