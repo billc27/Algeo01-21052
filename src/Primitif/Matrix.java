@@ -260,4 +260,20 @@ public class Matrix {
         }
         return val;
     }
+    
+    public Matrix extendMatrix(Matrix m1, Matrix m2) {
+        Matrix m3;
+        int i, j;
+        m3 = new Matrix(m1.getRow(), m1.getCol()+m2.getCol());
+        for (i = 0; i < m1.getRow(); i++) {
+            for (j = 0; j < m1.getCol()+m2.getCol(); j++) {
+                if (j < m1.getCol()) {
+                    m3.setElmt(i, j, m1.getElmt(i, j));
+                } else {
+                    m3.setElmt(i, j, m2.getElmt(i, j - m1.getCol()));
+                }
+            }
+        }
+        return m3;
+    }
 }
