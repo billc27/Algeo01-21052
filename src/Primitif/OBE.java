@@ -44,7 +44,7 @@ public class OBE {
             for(i=iterate; i<mOut.getRow(); i++){
                 // finding most left leading one in the matrix
                 j = 0;
-                while(mOut.getElmt(i, j)==0){
+                while(mOut.getElmt(i, j)==0 && j<mOut.getCol()-1){
                     j++;
                 }
                 
@@ -106,7 +106,7 @@ public class OBE {
             for(i=iterate; i<m.getRow(); i++){
                 // finding most left leading one in the matrix
                 j = 0;
-                while(m.getElmt(i, j)==0){
+                while(m.getElmt(i, j)==0 && j<m.getCol()-1){
                     j++;
                 }
                 
@@ -305,7 +305,7 @@ public class OBE {
             for(i=iterate; i<mOut.getRow(); i++){
                 // finding most left leading one in the matrix
                 j = 0;
-                while(mOut.getElmt(i, j)==0){
+                while(mOut.getElmt(i, j)==0 && j<mOut.getCol()-1){
                     j++;
                 }
                 
