@@ -50,16 +50,16 @@ public class Bicubic {
     public static double bicubic(Matrix m, double x, double y) {
         Matrix xMatrix = xMat();
         Matrix koef = bicubKoef(m, xMatrix);
-        double val = 0;
+        double hasil = 0;
         int i, j, row=0;
         
         for (i = 0; i < 4; i++) {
             for (j = 0; j < 4; j++) {
-                val += Math.pow(x, i) * Math.pow(y, j) * koef.getElmt(row, 0);
+                hasil += Math.pow(x, i) * Math.pow(y, j) * koef.getElmt(row, 0);
                 row++;
             }
         }
-        return val;
+        return hasil;
     }
 
 }
