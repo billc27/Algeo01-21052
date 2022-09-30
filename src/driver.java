@@ -1,5 +1,9 @@
-import Primitif.Matrix;
-import Primitif.MatrixOp;
+import Primitif.*;
+
+import java.io.*;
+import java.io.IOException;
+import java.util.*;
+import IO.*;
 
 /**
 13521052 Melvin Kent
@@ -7,12 +11,24 @@ import Primitif.MatrixOp;
 13521100 Alexander Jason
 */
 public class driver {
-    public static void main(String[] args) {
+    static Scanner scanObj = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
         Matrix mnew = new Matrix(4, 4);
-        mnew.readMatrix(mnew.getRow(), mnew.getCol());
+        mnew = Parser.readFiletoMatrix();
         mnew.displayMatrix();
+        String temp = Parser.matToStr(mnew);
+        String fileName, filePath;
+        fileName = scanObj.nextLine();
+        filePath = Parser.getPathOutput(fileName);
+        Parser.strToFile(temp, filePath);
+        System.out.println(temp);
+        // File file = new File(filePath);
+        
         // SolveSPL.inverseMethod(mnew);
-        Bicubic.Bic(mnew).displayMatrix();
-        // System.out.println(mnew.isSegitigaAtas());
+        // Bicubic.inverseXmat().displayMatrix();
+        // // System.out.println(mnew.isSegitigaAtas());
+        // double val;
+        // val = Bicubic.bicubic(mnew, 0.5, 0.5);
+        // System.out.println(val);
     }
 }
