@@ -146,46 +146,33 @@ public class Matrix {
     }
 
     // *********************** Identitas *************************
-    // cek apakah dari matrix ada baris yang 0
-    public boolean isRowZero() {
-        int i, j;
-        boolean row_val, val;
-        i = 0;
+    // cek apakah baris adalah baris 0
+    public boolean isRowZero(int idxRow) {
+        int j;
+        boolean val;
+        
         j = 0;
-        row_val = true;
-        val = false;
-        for (i = 0; i < this.rows; i++) {
-            for (j = 0; j < this.cols; j++) {
-                if (getElmt(i, j) != 0) {
-                    row_val = false;
-                }
+        val = true;
+        for (j = 0; j < this.cols; j++) {
+            if (getElmt(idxRow, j) != 0) {
+                    val = false;
+                    break;
             }
-            if (row_val) {
-                val = true;
-            }
-            row_val = true;
         }
         return val;
     }
 
-    // cek apakah dari matriks ada kolom yang 0
-    public boolean isColZero() {
-        int i, j;
-        boolean col_val, val;
+    // cek apakah kolom adalah kolom 0
+    public boolean isColZero(int idxCol) {
+        int i;
+        boolean val;
         i = 0;
-        j = 0;
-        col_val = true;
-        val = false;
-        for (j = 0; j < this.cols; j++) {
-            for (i = 0; i < this.rows; i++) {
-                if (getElmt(i, j) != 0) {
-                    col_val = false;
-                }
+        val = true;
+        for (i = 0; i < this.rows; i++) {
+            if (getElmt(i, idxCol) != 0) {
+                val = false;
+                break;
             }
-            if (col_val) {
-                val = true;
-            }
-            col_val = true;
         }
         return val;
     }
