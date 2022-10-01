@@ -177,6 +177,22 @@ public class Matrix {
         return val;
     }
 
+    // cek apakah baris adalah baris 0 pada matriks augmented
+    public boolean isRowZeroAugmented(int idxRow) {
+        int j;
+        boolean val;
+        
+        j = 0;
+        val = true;
+        for (j = 0; j < this.cols - 1; j++) {
+            if (getElmt(idxRow, j) != 0) {
+                    val = false;
+                    break;
+            }
+        }
+        return val;
+    }
+
     public boolean isSquare() {
         return this.rows == this.cols;
     }

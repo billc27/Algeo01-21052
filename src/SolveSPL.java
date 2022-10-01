@@ -1,5 +1,4 @@
-import Primitif.Matrix;
-import Primitif.MatrixOp;
+import Primitif.*;
 /**
 13521052 Melvin Kent
 13521064 Bill Clinton
@@ -24,4 +23,48 @@ public class SolveSPL {
         }
         }
     }
+
+    public static void SPLGaussJordanMethod(Matrix m){
+        Matrix m1 = OBE.gaussJordan(m);
+        int i, j;
+        int row, col, selisih;
+        boolean nosolution;
+
+        nosolution = false;
+
+        row = 0;
+        col = 0;
+        
+
+        for(i=0; i<m1.getRow();i++){
+            if(!m1.isRowZeroAugmented(i)){
+                row++;
+            } else{
+                if(m1.getElmt(i, m1.getCol()-1)!=0){
+                    nosolution = true;
+                }
+            }
+        } 
+        for(j=0; j<m1.getCol()-1;j++){
+            if(!m1.isColZero(j)){
+                col++;
+            }
+        }
+
+        selisih = col - row;
+
+        if (nosolution){
+            System.out.println("Tidak ada solusi.");
+        } else { // solusi unik atau solusi banyak
+            if(selisih == 0){ // solusi unik
+                for (i = 0; i < row-1; i++) {
+                    System.out.println("x" + (i + 1) + " = " + (m1.getElmt(i, m1.getCol()-1)));
+                }
+            } else {
+                
+            }
+        }
+
+
+   }
 }
