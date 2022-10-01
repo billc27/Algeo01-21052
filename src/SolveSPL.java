@@ -1,5 +1,5 @@
 import Primitif.*;
-/**
+/*
 13521052 Melvin Kent
 13521064 Bill Clinton
 13521100 Alexander Jason
@@ -24,6 +24,19 @@ public class SolveSPL {
         }
     }
 
+    // Fungsi untuk mendapatkan matriks berisi solusi
+    public static Matrix solInverseMethod(Matrix m) {
+        Matrix mOri = MatrixOp.MatrixOriginal(m);
+        Matrix mHasil = MatrixOp.MatrixHasil(m);
+        Matrix mOut = new Matrix(m.getRow(), 1);
+        if (MatrixOp.inversAdj(mOri) == null) {
+            System.out.println("Matriks tidak memiliki balikan");
+        } else {
+            mOut = MatrixOp.multiplyMatrix(MatrixOp.inversAdj(mOri), mHasil);
+        }
+        return mOut;
+    }
+    
     public static void SPLGaussJordanMethod(Matrix m){
         Matrix m1 = OBE.gaussJordan(m);
         int i, j;
