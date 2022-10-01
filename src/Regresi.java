@@ -75,4 +75,18 @@ public class Regresi {
         }
         return mreg;
     }
+    
+    public static void solveReg(Matrix m) {
+        double humidity, temperatur, tekananUdara;
+        m = SolveSPL.solInverseMethod(m);
+        Scanner scanData = new Scanner(System.in);
+        System.out.print("Masukkan humidity(tanpa satuan): ");
+        humidity = scanData.nextDouble();
+        System.out.print("Masukkan temperatur(tanpa satuan): ");
+        temperatur = scanData.nextDouble();
+        System.out.print("Masukkan tekanan udara(tanpa satuan): ");
+        tekananUdara = scanData.nextDouble();
+        
+        System.out.println("Estimasi nilai Nitrous Oxide adalah " + (m.matrix[0][0] + m.matrix[1][0]*humidity + m.matrix[2][0]*temperatur + m.matrix[3][0]*tekananUdara) + ".");
+    }
 }
