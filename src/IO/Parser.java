@@ -92,9 +92,9 @@ public class Parser {
         currentPath = System.getProperty("user.dir");
         if (currentPath.contains("src")){
             currentPath = currentPath.replaceAll("src","");
-            filePath = currentPath+"test\\"+ fileName;
+            filePath = currentPath+"test\\output\\"+ fileName;
         } else {
-            filePath = currentPath+"\\test\\"+ fileName;
+            filePath = currentPath+"\\test\\output\\"+ fileName;
         }
 
         return filePath;
@@ -152,7 +152,7 @@ public class Parser {
         int i = 0, j = 0;
         for (i = 0; i < m.getRow(); i++) {
             for (j = 0; j < m.getCol(); j++) {
-                str.append(" " + m.getElmt(i, j));
+                str.append(" " + String.format("%.2f",m.getElmt(i, j)));
             }
             str.append("\n");
         }
@@ -161,11 +161,11 @@ public class Parser {
 
      // PROCEDURE
     // Melakukan print matriks
-    public void printMatrix(Matrix m){
-        for (int i = 0; i < m.getRow(); i++){
+    public void printMatrix(Matrix m) {
+        for (int i = 0; i < m.getRow(); i++) {
             System.out.print("[");
-            for (int j = 0; j < m.getCol(); j++){
-                if ( j == m.getCol()-1) {
+            for (int j = 0; j < m.getCol(); j++) {
+                if (j == m.getCol() - 1) {
                     System.out.printf("%.2f", m.getElmt(i, j));
                 } else {
                     System.out.printf("%.2f", m.getElmt(i, j));
@@ -175,34 +175,70 @@ public class Parser {
             System.out.println("]");
         }
     }
+    
+    public static Matrix inputMatrix() {
+        Matrix hasil = new Matrix(20, 20);
+        int baris, kolom;
+ 
+        System.out.print("Masukkan baris matriks: ");
+        baris = sc.nextInt();
+        System.out.print("Masukkan kolom matriksnya: ");
+        kolom = sc.nextInt();
+        Matrix mTerminal = new Matrix(baris, kolom);
+        mTerminal.readMatrix(baris, kolom);
+        hasil = mTerminal.copyMatrix();
 
+        return hasil;
+    }
     // FUNCTION 
-    // Menanyakan kepada user apakah ingin di print pada terminal atau pada text
-    public boolean reqPrint() {
+    // Menanyakan kepada user apakah ingin di print pada terminal atau pada text, true bila input/output pada terminal, false bila dari file
+    public static boolean inputMethod() {
+        int input;
         boolean run = true;
-        boolean text = false;
+        System.out.println("============== READ INPUT ===============");
+        System.out.println("Pilih cara untuk memasukkan Input:");
+        System.out.println("1. Input dari keyboard");
+        System.out.println("2. Input dari file .txt ");
+        while (run) {
+            System.out.print("Masukkan angka menu(1-2): ");
+            input = sc.nextInt();
+            switch (input) {
+                case 1:
+                    run = false;
+                    return true;
+                case 2:
+                    run = false;
+                    return false;
+                default:
+                System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
+            }
+
+        }
+        return true;
+    }
+    
+    public static boolean printMethod() {
+        boolean run = true;
         int input;
         System.out.println("============== PRINT RESULT ===============");
         System.out.println("Pilih cara untuk menampilkan Output:");
         System.out.println("1. Print pada terminal ");
         System.out.println("2. Print pada file .txt ");
         while (run) {
-            System.out.print("Masukkan angka saja (1-2): ");
+            System.out.print("Masukkan angka menu(1-2): ");
             input = sc.nextInt();
             switch (input) {
                 case 1:
-                    text = false;
                     run = false;
+                    return true;
                 case 2:
-                    text = true;
                     run = false;
+                    return false;
                 default:
                 System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
             }
 
         }
-
-        return text;
+        return true;
     }
-
 }

@@ -20,8 +20,5 @@ public class Crammer {
             m1 = m.copyMatrix();
         }
     } 
-
-
-
     
 }
