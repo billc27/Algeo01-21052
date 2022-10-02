@@ -85,14 +85,18 @@ public class SolveSPL {
                                 if(j!=b){ // apabila bukan leading one
                                     System.out.println((char)(j+65));
                                 } else { // apabila leading one
-                                    System.out.print(m1.getElmt(i, m1.getCol()-1));
+                                    if(m1.getElmt(i, m1.getCol()-1)!=0){
+                                        System.out.print(m1.getElmt(i, m1.getCol()-1));
+                                    }
                                      // iterasi untuk mencari variabel lainnya di baris i
                                     for(a = b+1; a < m1.getCol()-1; a++){
                                         if(m1.getElmt(i, a)>0){
                                             System.out.print(" - " + m1.getElmt(i, a)+(char)(a+65));
 
-                                        } else if (m1.getElmt(i, a)<0){
+                                        } else if (m1.getElmt(i, a)<0 && m1.getElmt(i, m1.getCol()-1)!=0){
                                             System.out.print(" + " + -1*m1.getElmt(i, a) + (char)(a+65));
+                                        } else if(m1.getElmt(i, a)<0 && m1.getElmt(i, m1.getCol()-1)==0){
+                                            System.out.print(""+ -1*m1.getElmt(i, a) + (char)(a+65));
                                         }
                                     }
                                     System.out.println();
@@ -101,11 +105,24 @@ public class SolveSPL {
                             }
                         }
                     }
-
                 }
             }
         }
+    }
+    public static void crammerMethod(Matrix m){
+        Matrix m1;
+        int i;
+        double det, det1;
 
+        det = OBE.detOBE(m);
+        det1 = 1;
+        m1 = m.copyMatrix();
 
-   }
+        for(i=0; i<m.getCol()-1; i++){
+            m1.swapCol(i, m.getCol()-1);
+            det1 = OBE.detOBE(m1);
+            System.out.println("x"+ (i+1) + " = " + det1/det);
+            m1 = m.copyMatrix();
+        }
+    }
 }
