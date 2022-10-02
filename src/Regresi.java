@@ -46,7 +46,7 @@ public class Regresi {
         }
 
         if (pilihan == 1) {
-            mawal = Parser.readFiletoMatrix();
+            mawal = Parser.readFiletoMatrix2();
         } else {
             mawal = mawal.inputManualReg(mawal);
         }
