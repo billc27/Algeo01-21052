@@ -145,7 +145,6 @@ public class Main {
                     detEkspansiKofaktor = MatrixOp.detCofactor(m);
                     System.out.println(detEkspansiKofaktor);
                     temp = Double.toString(detEkspansiKofaktor);
-                    System.out.print("Masukkan nama file penyimpanan hasil dengan .txt: ");
                     Parser.printMatrixtoFile(temp);
                     run = false;
                     break;
@@ -156,7 +155,6 @@ public class Main {
                     determinanOBE = OBE.detOBE(m);
                     System.out.println(determinanOBE);
                     temp = Double.toString(determinanOBE);
-                    System.out.print("Masukkan nama file penyimpanan hasil dengan .txt: ");
                     Parser.printMatrixtoFile(temp);
                     run = false;
                     break;
