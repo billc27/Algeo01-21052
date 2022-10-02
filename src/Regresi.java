@@ -46,7 +46,7 @@ public class Regresi {
         }
 
         if (pilihan == 1) {
-            mawal = Parser.readFiletoMatrix();
+            mawal = Parser.readFiletoMatrix2();
         } else {
             mawal = mawal.inputManualReg(mawal);
         }
@@ -77,7 +77,7 @@ public class Regresi {
     }
     
     public static void solveReg(Matrix m) {
-        double humidity, temperatur, tekananUdara;
+        double humidity, temperatur, tekananUdara, result;
         m = SolveSPL.solInverseMethod(m);
         Scanner scanData = new Scanner(System.in);
         System.out.print("Masukkan humidity(tanpa satuan): ");
@@ -87,6 +87,15 @@ public class Regresi {
         System.out.print("Masukkan tekanan udara(tanpa satuan): ");
         tekananUdara = scanData.nextDouble();
         
-        System.out.println("Estimasi nilai Nitrous Oxide adalah " + (m.matrix[0][0] + m.matrix[1][0]*humidity + m.matrix[2][0]*temperatur + m.matrix[3][0]*tekananUdara) + ".");
+        result = m.matrix[0][0] + m.matrix[1][0]*humidity + m.matrix[2][0]*temperatur + m.matrix[3][0]*tekananUdara;
+        System.out.println("Estimasi nilai Nitrous Oxide adalah " + result + ".");
+        
+        String temp = Double.toString(result);
+        String fileName, filePath;
+        System.out.print("Masukkan nama file penyimpanan hasil dengan .txt: ");
+        scanData.nextLine();
+        fileName = scanData.nextLine();
+        filePath = Parser.getPathOutput(fileName);
+        Parser.strToFile(temp, filePath);
     }
 }

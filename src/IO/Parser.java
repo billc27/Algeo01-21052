@@ -20,6 +20,51 @@ public class Parser {
             System.out.println("============== READ FILE ===============");
             System.out.print("Masukkan nama file lengkap dgn .txt = ");
             sc.nextLine();
+<<<<<<< HEAD
+=======
+            fileName = sc.nextLine();
+            filePath = getPathInput(fileName);
+            File file = new File(filePath);
+            if (file.exists()) {
+                try {
+                    FileReader reader = new FileReader(file);
+                    BufferedReader buffReader = new BufferedReader(reader);
+
+                    String line;
+                    // int countRow;
+                    row = 0;
+                    col = 0;
+                    while ((line = buffReader.readLine()) != null) {
+                        if (row == 0) {
+                            col = countCol(line);
+                        }
+                        row++;
+                    }
+                    m = new Matrix(row, col);
+                    m = fileToMat(file);
+                    reader.close();
+                    run = false;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                run = false;
+            } else {
+                System.out.println("File '" + fileName + "' tidak ada!");
+            }
+        }
+        return m;
+    }
+
+    public static Matrix readFiletoMatrix2() throws IOException{
+        String fileName, filePath;
+        boolean run = true;
+        int row, col;
+        Matrix m = new Matrix(0,0);
+
+        while (run) {
+            System.out.println("============== READ FILE ===============");
+            System.out.print("Masukkan nama file lengkap dgn .txt = ");
+>>>>>>> 32d7774665741deca0aa8c1d97576bff48db4b6b
             fileName = sc.nextLine();
             filePath = getPathInput(fileName);
             File file = new File(filePath);
