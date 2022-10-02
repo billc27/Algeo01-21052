@@ -19,7 +19,7 @@ public class Parser {
         while (run) {
             System.out.println("============== READ FILE ===============");
             System.out.print("Masukkan nama file lengkap dgn .txt = ");
-            // sc.nextLine();
+            sc.nextLine();
             fileName = sc.nextLine();
             filePath = getPathInput(fileName);
             File file = new File(filePath);
