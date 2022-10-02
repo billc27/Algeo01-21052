@@ -11,7 +11,7 @@ import java.lang.Math;
 public class SolveSPL {
     static Scanner sc = new Scanner(System.in);
 
-    public static void inverseMethod(Matrix m){
+    public static void inverseMethod(Matrix m) throws IOException{
         Matrix mOri = MatrixOp.MatrixOriginal(m);
         Matrix mHasil = MatrixOp.MatrixHasil(m);
         // Matrix inv = Matrix.inversAdj();
@@ -28,12 +28,8 @@ public class SolveSPL {
                     System.out.printf("x%d = %.2f\n", (i + 1),(mOut.getElmt(i, 0)));
                 }
             } else {
-                System.out.print("Masukkan nama file hasil, lengkap dgn .txt = ");
                 String temp = Parser.matToStr(mOut);
-                String fileName, filePath;
-                fileName = sc.nextLine();
-                filePath = Parser.getPathOutput(fileName);
-                Parser.strToFile(temp, filePath);
+                Parser.printMatrixtoFile(temp);
             }
         }
     }

@@ -47,6 +47,7 @@ public class Main {
         boolean run = true;
         Matrix m = new Matrix(20, 20);
         while (run) {
+            //sisanya melvin
             System.out.print("Masukkan angka menu(1-4): ");
             input = sc.nextInt();
             System.out.println();
@@ -166,7 +167,7 @@ public class Main {
     }
 
     public static void interpolasiMenu() {
-
+        // jobdesc: melvin
     }
     
     public static void bicubicMenu() throws IOException {
