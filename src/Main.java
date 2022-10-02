@@ -134,9 +134,36 @@ public class Main {
         }
     }
     
-    public static void detMenu() {
+    public static void detMenu() throws IOException {
         subMenuDet();
-
+        int input, i, j;
+        boolean run = true;
+        Matrix m = new Matrix(20, 20), mOut = new Matrix(20, 20);
+        while (run) {
+            System.out.print("Masukkan angka menu(1-2): ");
+            input = sc.nextInt();
+            System.out.println();
+            switch (input) {
+                case 1:
+                    m = Parser.input(true);
+                    // Metode Ekspansi Kofaktor
+                    double detEkspansiKofaktor;
+                    detEkspansiKofaktor = MatrixOp.detCofactor(m);
+                    System.out.println(detEkspansiKofaktor);
+                    run = false;
+                    break;
+                case 2:
+                    m = Parser.input(true);
+                    // Metode OBE
+                    double determinanOBE;
+                    determinanOBE = OBE.detOBE(m);
+                    System.out.println(determinanOBE);
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
+            }
+        }
     }
 
     public static void interpolasiMenu() {
@@ -182,7 +209,7 @@ public class Main {
         Regresi.solveReg(mreg);
     }
     public static void main(String[] args) throws IOException {
-        regresiMenu();
+        detMenu();
     }
     
 }
