@@ -176,11 +176,13 @@ public class Main {
         
     }
     
-    public static void regresiMenu() {
-        
+    public static void regresiMenu() throws IOException {
+        Matrix mreg = new Matrix(100, 100);
+        mreg = Regresi.matRegression();
+        Regresi.solveReg(mreg);
     }
     public static void main(String[] args) throws IOException {
-        bicubicMenu();
+        regresiMenu();
     }
     
 }
