@@ -97,9 +97,10 @@ public class MatrixOp {
     
     // invers metode identitas
     public static Matrix inversId(Matrix m) {
+        //prekondisi, matrix persegi
         int i, j,col = m.getCol();
         Matrix mTemp = m.copyMatrix();
-
+        
         mTemp.setCol(col * 2);
         for (i = 0; i < mTemp.getRow(); i++) {
             for (j = m.getCol(); j < mTemp.getCol(); j++) {
@@ -110,6 +111,17 @@ public class MatrixOp {
         }
         
         mTemp = OBE.gaussJordan(mTemp);
+        Matrix mOut = new Matrix(m.rows,m.cols);
+        for (i = 0; i < mOut.rows; i++) {
+            for (j = 0; j < mOut.cols; j++) {
+                mOut.setElmt(i, j, mTemp.getElmt(i, j));
+            }
+        }
+        for (i = 0; i < mOut.rows;i++){
+            if (mOut.isRowZero(i)) {
+                return null;
+            }
+        }
         return mTemp.copy(0, col, col, col);
         // return mTemp;
     }

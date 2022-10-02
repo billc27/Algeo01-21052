@@ -45,8 +45,9 @@ public class Parser {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }else {
-                System.out.println("File '"+ fileName+ "' tidak ada!");
+                run = false;
+            } else {
+                System.out.println("File '" + fileName + "' tidak ada!");
             }
         }
         return m;
@@ -179,13 +180,25 @@ public class Parser {
     public static Matrix inputMatrix() {
         Matrix hasil = new Matrix(20, 20);
         int baris, kolom;
- 
+
         System.out.print("Masukkan baris matriks: ");
         baris = sc.nextInt();
         System.out.print("Masukkan kolom matriksnya: ");
         kolom = sc.nextInt();
         Matrix mTerminal = new Matrix(baris, kolom);
         mTerminal.readMatrix(baris, kolom);
+        hasil = mTerminal.copyMatrix();
+
+        return hasil;
+    }
+    public static Matrix inputMatrixPersegi() {
+        Matrix hasil = new Matrix(20, 20);
+        int baris;
+ 
+        System.out.print("Masukkan ukuran matriks persegi: ");
+        baris = sc.nextInt();
+        Matrix mTerminal = new Matrix(baris, baris);
+        mTerminal.readMatrix(baris, baris);
         hasil = mTerminal.copyMatrix();
 
         return hasil;
@@ -235,10 +248,25 @@ public class Parser {
                     run = false;
                     return false;
                 default:
-                System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
+                    System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
             }
 
         }
         return true;
+    }
+    
+    public static Matrix input(boolean square) throws IOException {
+        boolean in = inputMethod();
+        Matrix mOut = new Matrix(20, 20);
+        if (in == true) {
+            if (square) {
+                mOut = inputMatrixPersegi();
+            } else {
+                mOut = inputMatrix();
+            }
+        } else {
+            mOut = readFiletoMatrix();
+        }
+        return mOut;
     }
 }

@@ -25,7 +25,7 @@ public class Matrix {
     public void readMatrix(int row, int col) {
         double elmt;
         int i, j;
-
+        System.out.println("Masukkan Matriks, pisahkan baris dengan newline dan kolom dengan spasi");
         Scanner scanElmt = new Scanner(System.in);
         this.rows = row;
         this.cols = col;
