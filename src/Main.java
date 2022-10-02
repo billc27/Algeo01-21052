@@ -135,8 +135,11 @@ public class Main {
     }
     
     public static void detMenu() throws IOException {
+        String temp;
+        String fileName, filePath;
         subMenuDet();
         int input, i, j;
+        Scanner scanData = new Scanner(System.in);
         boolean run = true;
         Matrix m = new Matrix(20, 20), mOut = new Matrix(20, 20);
         while (run) {
@@ -150,6 +153,11 @@ public class Main {
                     double detEkspansiKofaktor;
                     detEkspansiKofaktor = MatrixOp.detCofactor(m);
                     System.out.println(detEkspansiKofaktor);
+                    temp = Double.toString(detEkspansiKofaktor);
+                    System.out.print("Masukkan nama file penyimpanan hasil dengan .txt: ");
+                    fileName = scanData.nextLine();
+                    filePath = Parser.getPathOutput(fileName);
+                    Parser.strToFile(temp, filePath);
                     run = false;
                     break;
                 case 2:
@@ -158,6 +166,11 @@ public class Main {
                     double determinanOBE;
                     determinanOBE = OBE.detOBE(m);
                     System.out.println(determinanOBE);
+                    temp = Double.toString(determinanOBE);
+                    System.out.print("Masukkan nama file penyimpanan hasil dengan .txt: ");
+                    fileName = scanData.nextLine();
+                    filePath = Parser.getPathOutput(fileName);
+                    Parser.strToFile(temp, filePath);
                     run = false;
                     break;
                 default:
