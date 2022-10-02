@@ -125,8 +125,11 @@ public class Main {
     }
     
     public static void detMenu() throws IOException {
+        String temp;
+        String fileName, filePath;
         subMenuDet();
         int input, i, j;
+        Scanner scanData = new Scanner(System.in);
         boolean run = true;
         Matrix m = new Matrix(20, 20), mOut = new Matrix(20, 20);
         while (run) {
@@ -136,12 +139,24 @@ public class Main {
             switch (input) {
                 case 1:
                     m = Parser.input(true);
-                    // pake fungsi det ekspansi
+                    // Metode Ekspansi Kofaktor
+                    double detEkspansiKofaktor;
+                    detEkspansiKofaktor = MatrixOp.detCofactor(m);
+                    System.out.println(detEkspansiKofaktor);
+                    temp = Double.toString(detEkspansiKofaktor);
+                    System.out.print("Masukkan nama file penyimpanan hasil dengan .txt: ");
+                    Parser.printMatrixtoFile(temp);
                     run = false;
                     break;
                 case 2:
                     m = Parser.input(true);
-                    // pake fungsi det obe
+                    // Metode OBE
+                    double determinanOBE;
+                    determinanOBE = OBE.detOBE(m);
+                    System.out.println(determinanOBE);
+                    temp = Double.toString(determinanOBE);
+                    System.out.print("Masukkan nama file penyimpanan hasil dengan .txt: ");
+                    Parser.printMatrixtoFile(temp);
                     run = false;
                     break;
                 default:
@@ -187,9 +202,11 @@ public class Main {
     }
     
     public static void regresiMenu() throws IOException {
-        Regresi.matRegression();
+        Matrix mreg = new Matrix(100, 100);
+        mreg = Regresi.matRegression();
+        Regresi.solveReg(mreg);
     }
     public static void main(String[] args) throws IOException {
-        invMenu();
+        detMenu();
     }   
 }

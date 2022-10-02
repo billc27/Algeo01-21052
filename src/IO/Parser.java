@@ -10,11 +10,11 @@ public class Parser {
     static Scanner sc = new Scanner(System.in);
     public int input;
 
-    public static Matrix readFiletoMatrix() throws IOException{
+    public static Matrix readFiletoMatrix() throws IOException {
         String fileName, filePath;
         boolean run = true;
         int row, col;
-        Matrix m = new Matrix(0,0);
+        Matrix m = new Matrix(0, 0);
 
         while (run) {
             System.out.println("============== READ FILE ===============");
@@ -53,6 +53,48 @@ public class Parser {
         return m;
     }
 
+    public static Matrix readFiletoMatrix2() throws IOException {
+        String fileName, filePath;
+        boolean run = true;
+        int row, col;
+        Matrix m = new Matrix(0, 0);
+
+        while (run) {
+            System.out.println("============== READ FILE ===============");
+            System.out.print("Masukkan nama file lengkap dgn .txt = ");
+            fileName = sc.nextLine();
+            filePath = getPathInput(fileName);
+            File file = new File(filePath);
+            if (file.exists()) {
+                try {
+                    FileReader reader = new FileReader(file);
+                    BufferedReader buffReader = new BufferedReader(reader);
+
+                    String line;
+                    // int countRow;
+                    row = 0;
+                    col = 0;
+                    while ((line = buffReader.readLine()) != null) {
+                        if (row == 0) {
+                            col = countCol(line);
+                        }
+                        row++;
+                    }
+                    m = new Matrix(row, col);
+                    m = fileToMat(file);
+                    reader.close();
+                    run = false;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                run = false;
+            } else {
+                System.out.println("File '" + fileName + "' tidak ada!");
+            }
+        }
+        return m;
+    }
+    
     public static Integer countCol(String line){
         // Menghitung banyaknya kolom dapat menggunakan dengan menghitung banyaknya spasi
         // Setiap elemen berakhir maka terdapat spasi. Maka 1 spasi merepresentasikan 1 elemen.
