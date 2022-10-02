@@ -19,7 +19,7 @@ public class Parser {
         while (run) {
             System.out.println("============== READ FILE ===============");
             System.out.print("Masukkan nama file lengkap dgn .txt = ");
-            // sc.nextLine();
+            sc.nextLine();
             fileName = sc.nextLine();
             filePath = getPathInput(fileName);
             File file = new File(filePath);
@@ -43,11 +43,11 @@ public class Parser {
                     reader.close();
                     run = false;
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.out.println("File '" + fileName + "' tidak ditemukan");
                 }
                 run = false;
             } else {
-                System.out.println("File '" + fileName + "' tidak ada!");
+                System.out.println("File '" + fileName + "' tidak ada");
             }
         }
         return m;
@@ -268,5 +268,24 @@ public class Parser {
             mOut = readFiletoMatrix();
         }
         return mOut;
+    }
+    public static void printMatrixtoFile(String hasil) throws IOException{
+        String filePath,fileName;
+        boolean run = true;
+
+        while (run) {
+            System.out.print("Masukkan nama file hasil, lengkap dgn .txt = ");
+            sc.nextLine();
+            fileName = sc.nextLine();
+            filePath = getPathOutput(fileName);
+            File file = new File(filePath);
+            file.createNewFile();
+            if (file.exists()) {
+                strToFile(hasil, filePath);
+                run = false;
+            } else {
+                System.out.println("File '" + fileName + "' tidak ada");
+            }
+        }
     }
 }

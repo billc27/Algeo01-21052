@@ -38,7 +38,6 @@ public class SolveSPL {
         }
     }
 
-
     // Fungsi untuk mendapatkan matriks berisi solusi
     public static Matrix solInverseMethod(Matrix m) {
         Matrix mOri = MatrixOp.MatrixOriginal(m);
@@ -63,7 +62,6 @@ public class SolveSPL {
         row = 0;
         col = 0;
         
-
         for(i=0; i<m1.getRow();i++){
             if(!m1.isRowZeroAugmented(i)){
                 row++;
