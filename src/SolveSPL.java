@@ -1,7 +1,7 @@
 import Primitif.*;
-
-import java.io.IOException;
-
+import java.io.*;
+import java.util.*;
+import java.lang.Math;
 import IO.*;
 
 /**
@@ -10,23 +10,42 @@ import IO.*;
 13521100 Alexander Jason
 */
 public class SolveSPL {
-    
-    public static void inverseMethod(Matrix m){
+    static Scanner sc = new Scanner(System.in);
+
+    public static void inverseMethod(Matrix m) throws IOException{
         Matrix mOri = MatrixOp.MatrixOriginal(m);
         Matrix mHasil = MatrixOp.MatrixHasil(m);
         // Matrix inv = Matrix.inversAdj();
         int i;
         Matrix mOut = new Matrix(m.getRow(), 1);
-        mOri.displayMatrix();
-        mHasil.displayMatrix();
+
         if (MatrixOp.inversAdj(mOri) == null) {
             System.out.println("Matriks tidak memiliki balikan");
-        }else{
-        mOut = MatrixOp.multiplyMatrix(MatrixOp.inversAdj(mOri), mHasil);
-        for (i = 0; i < mOut.getRow(); i++) {
-            System.out.println("x" + (i + 1) + " = " + (mOut.getElmt(i, 0)));
+        } else {
+            boolean out = Parser.printMethod();
+            mOut = MatrixOp.multiplyMatrix(MatrixOp.inversAdj(mOri), mHasil);
+            if (out == true) {
+                for (i = 0; i < mOut.getRow(); i++) {
+                    System.out.printf("x%d = %.2f\n", (i + 1),(mOut.getElmt(i, 0)));
+                }
+            } else {
+                String temp = Parser.matToStr(mOut);
+                Parser.printMatrixtoFile(temp);
+            }
         }
+    }
+
+    // Fungsi untuk mendapatkan matriks berisi solusi
+    public static Matrix solInverseMethod(Matrix m) {
+        Matrix mOri = MatrixOp.MatrixOriginal(m);
+        Matrix mHasil = MatrixOp.MatrixHasil(m);
+        Matrix mOut = new Matrix(m.getRow(), 1);
+        if (MatrixOp.inversAdj(mOri) == null) {
+            System.out.println("Matriks tidak memiliki balikan");
+        } else {
+            mOut = MatrixOp.multiplyMatrix(MatrixOp.inversAdj(mOri), mHasil);
         }
+        return mOut;
     }
 
     public static void SPLGaussJordanMethod(Matrix m) throws IOException{

@@ -45,7 +45,7 @@ public class Main {
         subMenuSPL();
         int input;
         boolean run = true;
-        Matrix m = new Matrix(20, 20), mOut = new Matrix(20, 20);
+        Matrix m = new Matrix(20, 20);
         while (run) {
             System.out.print("Masukkan angka menu(1-4): ");
             input = sc.nextInt();
@@ -169,7 +169,7 @@ public class Main {
         System.out.println("============= POLINOM INTERPOLATION MENU =============");
         m = Parser.input(false);
         Matrix mAugmented = Polinom.matrixGenerator(m);
-        int input;
+        int tes;
         double hasil;
         boolean run = true;
         while (run){
@@ -181,15 +181,19 @@ public class Main {
             System.out.println("1. Ya");
             System.out.println("2. Tidak");
             System.out.print("Masukkan angka menu(1-2): ");
-            input = sc.nextInt();
-            switch (input) {
+            // sc.hasNext();
+            Scanner scanElmt = new Scanner(System.in);
+            tes = scanElmt.nextInt();
+            scanElmt.close();
+
+            switch (tes) {
                 case 1:
                     continue;
                 case 2:
                     run = false;
                     break;
                 default:
-                    System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
+                    System.out.println("Input " + tes + " tidak valid. Silahkan masukan input yang valid.");
             }
         }
     }
@@ -232,6 +236,7 @@ public class Main {
         Regresi.solveReg(mreg);
     }
     public static void main(String[] args) throws IOException {
-        detMenu();
+        // detMenu();
+        interpolasiMenu();
     }   
 }
