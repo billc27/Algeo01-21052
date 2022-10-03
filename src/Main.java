@@ -74,6 +74,7 @@ public class Main {
                     System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
             }
         }
+        System.out.println("------------------------------------------");
     }
 
     public static void invMenu() throws IOException {
@@ -124,6 +125,7 @@ public class Main {
                     System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
             }
         }
+        System.out.println("------------------------------------------");
     }
     
     public static void detMenu() throws IOException {
@@ -161,6 +163,7 @@ public class Main {
                     System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
             }
         }
+        System.out.println("------------------------------------------");
     }
 
     public static void interpolasiMenu() throws IOException {
@@ -201,14 +204,14 @@ public class Main {
         double hasil, x, y;
         boolean run = true;
         System.out.println("Taksir nilai Fungsi");
-        while (run){
+        while (run) {
             System.out.print("Masukkan titik x: ");
             x = sc.nextDouble();
             System.out.print("Masukkan titik y: ");
             y = sc.nextDouble();
 
             hasil = Bicubic.bicubic(m, x, y);
-            System.out.printf("Hasil f(%.2f ,%.2f) = %.2f\n",x,y,hasil);
+            System.out.printf("Hasil f(%.2f ,%.2f) = %.2f\n", x, y, hasil);
             System.out.println("Apakah ingin mengecek hasil taksiran fungsi lain?");
             System.out.println("1. Ya");
             System.out.println("2. Tidak");
@@ -224,12 +227,14 @@ public class Main {
                     System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
             }
         }
+        System.out.println("------------------------------------------");
     }
     
     public static void regresiMenu() throws IOException {
         Matrix mreg = new Matrix(100, 100);
         mreg = Regresi.matRegression();
         Regresi.solveReg(mreg);
+        System.out.println("------------------------------------------");
     }
 
     public static void opening() {
