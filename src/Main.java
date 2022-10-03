@@ -186,7 +186,7 @@ public class Main {
         
         while (run){
             hasil = Polinom.polinomInterpolation(mAugmented);
-            System.out.printf("y = %.2f\n", hasil);
+            System.out.printf("f(x) = %.2f\n", hasil);
             System.out.println("Apakah ingin mengecek hasil taksiran fungsi lain?");
             System.out.println("1. Ya");
             System.out.println("2. Tidak");

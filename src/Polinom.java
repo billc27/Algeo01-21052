@@ -48,9 +48,9 @@ public class Polinom {
             if(i==0){
                 System.out.print(m.getElmt(i, m.getCol()-1));
             } else if (m.getElmt(i, m.getCol()-1)>=0){
-                System.out.print(" + " + m.getElmt(i, m.getCol()-1) + "x" + i);
+                System.out.print(" + " + m.getElmt(i, m.getCol()-1) + "x^" + i);
             } else {
-                System.out.print(" - " + -1*m.getElmt(i, m.getCol()-1) + "x" + i);
+                System.out.print(" - " + -1*m.getElmt(i, m.getCol()-1) + "x^" + i);
             }
         }
         System.out.println();
