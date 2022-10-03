@@ -168,9 +168,28 @@ public class Main {
         m = Parser.input(false);
         Matrix mAugmented = Polinom.matrixGenerator(m);
         double hasil;
-        hasil = Polinom.polinomInterpolation(mAugmented);
-
-        System.out.printf("y = %.2f\n", hasil);
+        
+        boolean run = true;
+        int input;
+        
+        while (run){
+            hasil = Polinom.polinomInterpolation(mAugmented);
+            System.out.printf("y = %.2f\n", hasil);
+            System.out.println("Apakah ingin mengecek hasil taksiran fungsi lain?");
+            System.out.println("1. Ya");
+            System.out.println("2. Tidak");
+            System.out.print("Masukkan angka menu(1-2): ");
+            input = sc.nextInt();
+            switch (input) {
+                case 1:
+                    continue;
+                case 2:
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
+            }
+        }
         System.out.println("------------------------------------------");
         
     }

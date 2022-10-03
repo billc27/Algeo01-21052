@@ -60,7 +60,6 @@ public class Polinom {
         
         Scanner scanElmt = new Scanner(System.in);
         x = scanElmt.nextDouble();
-        scanElmt.close();
         hasil = 0;
         xPangkat=1;
         for(i=0; i<m.getRow(); i++){  
