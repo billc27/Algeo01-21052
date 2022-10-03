@@ -12,16 +12,7 @@ import IO.*;
 public class driver {
     static Scanner scanObj = new Scanner(System.in);
     public static void main(String[] args) throws IOException {
-        Matrix mnew = new Matrix(4, 4);
-        mnew = Parser.readFiletoMatrix();
-        mnew.displayMatrix();
-        String temp = Parser.matToStr(mnew);
-        String fileName, filePath;
-        fileName = scanObj.nextLine();
-        filePath = Parser.getPathOutput(fileName);
-        Parser.strToFile(temp, filePath);
-        System.out.println(temp);
-        // File file = new File(filePath);
+        Main.SPLmenu();
         
         // SolveSPL.inverseMethod(mnew);
         // Bicubic.inverseXmat().displayMatrix();

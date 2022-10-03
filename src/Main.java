@@ -52,21 +52,25 @@ public class Main {
             System.out.println();
             switch (input) {
                 case 1:
+                    System.out.println("============= Metode Gauss =============");
                     m = Parser.input(false);
                     SolveSPL.SPLGaussMethod(m);
                     run = false;
                     break;
                 case 2:
+                    System.out.println("========= Metode Gauss-Jordan ===========");
                     m = Parser.input(false);
                     SolveSPL.SPLGaussJordanMethod(m);
                     run = false;
                     break;
                 case 3:
+                    System.out.println("============ Metode Balikan =============");
                     m = Parser.input(false);
                     SolveSPL.inverseMethod(m);
                     run = false;
                     break;
                 case 4:
+                    System.out.println("============= Metode Cramer =============");
                     m = Parser.input(false);
                     SolveSPL.cramerMethod(m);
                     run = false;
@@ -89,6 +93,7 @@ public class Main {
             System.out.println();
             switch (input) {
                 case 1:
+                    System.out.println("============= Metode Adjoint =============");
                     m = Parser.input(true);
                     mOut = MatrixOp.inversAdj(m);
                     if (mOut == null) {
@@ -106,6 +111,7 @@ public class Main {
                     run = false;
                     break;
                 case 2:
+                    System.out.println("=========== Metode Identitas =============");
                     m = Parser.input(true);
                     mOut = MatrixOp.inversId(m);
                     if (mOut == null) {
@@ -141,6 +147,7 @@ public class Main {
             System.out.println();
             switch (input) {
                 case 1:
+                    System.out.println("========== Metode Ekspansi Kofaktor ===========");
                     m = Parser.input(true);
                     // Metode Ekspansi Kofaktor
                     double detEkspansiKofaktor;
@@ -151,6 +158,7 @@ public class Main {
                     run = false;
                     break;
                 case 2:
+                    System.out.println("================ Metode OBE ==================");
                     m = Parser.input(true);
                     // Metode OBE
                     double determinanOBE;
