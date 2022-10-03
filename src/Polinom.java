@@ -6,21 +6,20 @@ import Primitif.OBE;
 
 public class Polinom {
 
-    public static void polinomInterpolation(){
+    public static Matrix matrixGenerator(Matrix mData){
         int i, j;
         double a,b, val;
-        double x;
-        double hasil, xPangkat;
-        Scanner scanElmt = new Scanner(System.in);
-        
-
         int n; // jumlah data
+        // Scanner scanElmt = new Scanner(System.in);
 
-        n = scanElmt.nextInt();
+
+        n = mData.getRow();
         Matrix m = new Matrix(n, n+1);
         for(i=0; i<n; i++){
-            a = scanElmt.nextDouble();
-            b = scanElmt.nextDouble();
+            // a = scanElmt.nextDouble();
+            // b = scanElmt.nextDouble();
+            a = mData.getElmt(i, 0);
+            b = mData.getElmt(i, 1);
             val = 1;
             for(j=0; j<m.getCol(); j++){
                 if(j==m.getCol()-1){
@@ -31,12 +30,35 @@ public class Polinom {
                 }
             }
         }
+        return m;
+    }
 
+    public static double polinomInterpolation(Matrix m){
+        int i;
+        double x;
+        double hasil, xPangkat;
+        // final StringBuffer str = new StringBuffer();
+        
         // m.readMatrix(m.getRow(), m.getCol());
-        m.displayMatrix();
+        // m.displayMatrix();
         OBE.toReducedEchelon(m);
         
+        System.out.print("f(x) = ");
+        for(i=0; i<m.getRow(); i++){  
+            if(i==0){
+                System.out.print(m.getElmt(i, m.getCol()-1));
+            } else if (m.getElmt(i, m.getCol()-1)>=0){
+                System.out.print(" + " + m.getElmt(i, m.getCol()-1) + "x" + i);
+            } else {
+                System.out.print(" - " + -1*m.getElmt(i, m.getCol()-1) + "x" + i);
+            }
+        }
+        System.out.println();
         
+        System.out.println("Taksir nilai Fungsi");
+        System.out.print("Masukkan nilai x: ");
+        
+        Scanner scanElmt = new Scanner(System.in);
         x = scanElmt.nextDouble();
         scanElmt.close();
         hasil = 0;
@@ -45,9 +67,7 @@ public class Polinom {
             hasil = hasil + m.getElmt(i, m.getCol()-1)*xPangkat;
             xPangkat = xPangkat*x;
         }
-        System.out.printf("%.3f",hasil);
+
+        return hasil;
     }
-
-
-
 }
