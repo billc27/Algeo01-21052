@@ -212,8 +212,47 @@ public class Main {
         mreg = Regresi.matRegression();
         Regresi.solveReg(mreg);
     }
+
+    public static void opening() {
+        System.out.println("============== SELAMAT DATANG DI MATRIX CALCULATOR BAM ===============\n");
+    }
+    public static void closing() {
+        System.out.println("============TERIMA KASIH TELAH MENGGUNAKAN CALCULATOR KAMI ===========");
+    }
     public static void main(String[] args) throws IOException {
-        // detMenu();
-        interpolasiMenu();
+        boolean run = true;
+        int input;
+        opening();
+        while (run) {
+            mainMenu();
+            System.out.print("Masukkan angka menu(1-4): ");
+            input = sc.nextInt();
+            switch (input) {
+                case 1:
+                    SPLmenu();
+                    break;
+                case 2:
+                    detMenu();
+                    break;
+                case 3:
+                    invMenu();
+                    break;
+                case 4:
+                    interpolasiMenu();
+                    break;
+                case 5:
+                    bicubicMenu();
+                    break;
+                case 6:
+                    regresiMenu();
+                    break;
+                case 7:
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
+            }
+        }
+        closing();
     }   
 }
