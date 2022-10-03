@@ -18,12 +18,15 @@ public class SolveSPL {
         // Matrix inv = Matrix.inversAdj();
         int i;
         Matrix mOut = new Matrix(m.getRow(), 1);
-
-        if (MatrixOp.inversId(mOri) == null) {
+        if (!mOri.isSquare()) {
+            System.out.println("Matriks bukan persegi");
+        }
+        else if (MatrixOp.inversId(mOri) == null) {
             System.out.println("Matriks tidak memiliki balikan");
         } else {
             boolean out = Parser.printMethod();
             mOut = MatrixOp.multiplyMatrix(MatrixOp.inversId(mOri), mHasil);
+            mOut.displayMatrix();
             if (out == true) {
                 for (i = 0; i < mOut.getRow(); i++) {
                     System.out.printf("x%d = %.2f\n", (i + 1),(mOut.getElmt(i, 0)));

@@ -116,7 +116,6 @@ public class Parser {
         String currentPath;
 
         currentPath = System.getProperty("user.dir");
-        System.out.println(currentPath);
         if (currentPath.contains("src")) {
             // jika currentPath user.dir berhenti hingga directory src
             currentPath = currentPath.replaceAll("src", "");
@@ -204,8 +203,6 @@ public class Parser {
     }
 
      // PROCEDURE
-    // Melakukan print matriks
-    
     public static Matrix inputMatrix() {
         Matrix hasil = new Matrix(20, 20);
         int baris, kolom;
