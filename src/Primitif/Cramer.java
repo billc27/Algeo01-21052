@@ -1,6 +1,6 @@
 package Primitif;
 
-public class Crammer {
+public class Cramer {
     
     // membaca matriks augmented
     public static void splCrammer(Matrix m){
