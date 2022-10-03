@@ -1,12 +1,6 @@
 package Primitif;
 import java.util.Scanner;
 
-/*
-13521052 Melvin Kent
-13521064 Bill Clinton
-13521100 Alexander Jason
- */
-
 public class Matrix {
     int rows;
     int cols;

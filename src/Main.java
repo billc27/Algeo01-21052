@@ -1,8 +1,5 @@
 import java.io.*;
 import java.util.*;
-import java.lang.Math;
-import java.text.Format;
-
 import IO.*;
 import Primitif.*;
 

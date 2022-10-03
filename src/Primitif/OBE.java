@@ -54,19 +54,12 @@ public class OBE {
                 }
             }
             mOut.swapRow(row, iterate);
-            // for debugging purpose
-            // System.out.println(iterate);
-            // System.out.println(row);
         }
         return mOut;
     }
     public static void toEchelon(Matrix m){ //mengubah matriks m ke dalam bentuk eselon
-        // Matrix m1;
-        // m1 = m.copyMatrix();
-        // gauss(m, m1);
         int i, j, k, l, p;
         double pembagi, pengali;
-        // m1 = m.copyMatrix();
         for (i=0; i<m.rows; i++){
     
             // Mencari elemen bukan 0 pertama pada baris 1
@@ -116,14 +109,7 @@ public class OBE {
                 }
             }
             m.swapRow(row, iterate);
-            // for debugging purpose
-            // System.out.println(iterate);
-            // System.out.println(row);
         }
-
-
-
-     
     }
     public static Matrix gaussJordan(Matrix m) { //menghasilkan matriks baru m1 berupa matriks eselon tereduksi dari matriks m
         // Gauss
@@ -154,43 +140,6 @@ public class OBE {
                 }
             }
         }
-        // // SORT
-        // int x, y;
-        // int rowNow, colNow;
-        // // double max; 
-        // // for (x=0; x<m1.cols; x++){
-        // //     max = m1.getElmt();
-        // //     for (y=x; y<m1.rows; y++){
-        // //         // holder = m1.getElmt(y, x);
-        // //         // w = y-1;
-        // //         // while(w>=0 && m1.getElmt(y,x)<holder){
-        // //         //     m1.swapRow(w+1, w);
-        // //         //     w--;
-        // //         // }
-        // //         max = m1.getElmt(x, y);
-        // //     }
-        // // }
-        // rowNow = 0;
-        // colNow = 0;
-
-        // while(rowNow<m1.getRow()){
-        //     for(y=colNow; y<m1.cols; y++){
-        //         for(x=rowNow; x<m1.rows; x++){
-        //             if(m1.getElmt(x, y)!= 0){
-        //                 m1.swapRow(rowNow, x);
-        //                 break;
-        //             }
-        //         }
-        //         if(m1.getElmt(x, y)!= 0){
-        //             rowNow++;
-        //             colNow=y;
-        //             break;
-        //         }
-                
-        //     }
-        // }
-        
-
         return m1;
     }
     public static void toReducedEchelon(Matrix m) { ////mengubah matriks m ke dalam bentuk eselon tereduksi
@@ -221,42 +170,6 @@ public class OBE {
                 }
             }
         }
-        // // SORT
-        // int x, y;
-        // int rowNow, colNow;
-        // // double max; 
-        // // for (x=0; x<m1.cols; x++){
-        // //     max = m1.getElmt();
-        // //     for (y=x; y<m1.rows; y++){
-        // //         // holder = m1.getElmt(y, x);
-        // //         // w = y-1;
-        // //         // while(w>=0 && m1.getElmt(y,x)<holder){
-        // //         //     m1.swapRow(w+1, w);
-        // //         //     w--;
-        // //         // }
-        // //         max = m1.getElmt(x, y);
-        // //     }
-        // // }
-        // rowNow = 0;
-        // colNow = 0;
-
-        // while(rowNow<m1.getRow()){
-        //     for(y=colNow; y<m1.cols; y++){
-        //         for(x=rowNow; x<m1.rows; x++){
-        //             if(m1.getElmt(x, y)!= 0){
-        //                 m1.swapRow(rowNow, x);
-        //                 break;
-        //             }
-        //         }
-        //         if(m1.getElmt(x, y)!= 0){
-        //             rowNow++;
-        //             colNow=y;
-        //             break;
-        //         }
-                
-        //     }
-        // }
-
     }
     public static double detOBE(Matrix mIn){
         int i, j, k, l, p;
@@ -315,9 +228,6 @@ public class OBE {
                 }
             }
             mOut.swapRow(row, iterate);
-            // for debugging purpose
-            // System.out.println(iterate);
-            // System.out.println(row);
 
             if(row != iterate){
                 peubah = peubah*-1;
@@ -331,18 +241,4 @@ public class OBE {
         det = det * peubah;
         return det;
     }
-
-
-    // public static double detOBE(Matrix m) {
-    //     double det;
-    //     Matrix m1;
-
-    //     det = 1;
-
-    //     m1 = 
-
-
-
-    //     return det;
-    // }
 }

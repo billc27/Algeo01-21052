@@ -2,8 +2,6 @@ import java.io.IOException;
 import java.util.Scanner;
 import Primitif.Matrix;
 import Primitif.OBE;
-import IO.*;
-
 
 public class Polinom {
 
@@ -11,14 +9,10 @@ public class Polinom {
         int i, j;
         double a,b, val;
         int n; // jumlah data
-        // Scanner scanElmt = new Scanner(System.in);
-
 
         n = mData.getRow();
         Matrix m = new Matrix(n, n+1);
         for(i=0; i<n; i++){
-            // a = scanElmt.nextDouble();
-            // b = scanElmt.nextDouble();
             a = mData.getElmt(i, 0);
             b = mData.getElmt(i, 1);
             val = 1;
@@ -40,8 +34,6 @@ public class Polinom {
         double hasil, xPangkat;
         final StringBuffer str = new StringBuffer();
         
-        // m.readMatrix(m.getRow(), m.getCol());
-        // m.displayMatrix();
         OBE.toReducedEchelon(m);
         
         System.out.print("f(x) = ");
@@ -49,13 +41,10 @@ public class Polinom {
         for(i=0; i<m.getRow(); i++){  
             if(i==0){
                 System.out.print(m.getElmt(i, m.getCol()-1));
-                // str.append(m.getElmt(i, m.getCol()-1));
             } else if (m.getElmt(i, m.getCol()-1)>=0){
                 System.out.print(" + " + m.getElmt(i, m.getCol()-1) + "x^" + i);
-                // str.append(" + " + m.getElmt(i, m.getCol()-1) + "x^" + i);
             } else {
                 System.out.print(" - " + -1*m.getElmt(i, m.getCol()-1) + "x^" + i);
-                // str.append(" - " + -1*m.getElmt(i, m.getCol()-1) + "x^" + i);
             }
         }
         System.out.println();
@@ -71,7 +60,6 @@ public class Polinom {
             hasil = hasil + m.getElmt(i, m.getCol()-1)*xPangkat;
             xPangkat = xPangkat*x;
         }
-        // Parser.printMatrixtoFile(str.toString());
         return hasil;
     }
 }
