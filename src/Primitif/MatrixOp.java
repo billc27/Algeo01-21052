@@ -34,7 +34,7 @@ public class MatrixOp {
         int m;
         double det;
         Matrix mTemp = new Matrix(M.rows - 1, M.cols - 1);
-
+        
         sign = 1;
         det = 0;
         if (M.rows != 1) {

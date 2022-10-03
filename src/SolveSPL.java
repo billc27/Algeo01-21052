@@ -19,11 +19,11 @@ public class SolveSPL {
         int i;
         Matrix mOut = new Matrix(m.getRow(), 1);
 
-        if (MatrixOp.inversAdj(mOri) == null) {
+        if (MatrixOp.inversId(mOri) == null) {
             System.out.println("Matriks tidak memiliki balikan");
         } else {
             boolean out = Parser.printMethod();
-            mOut = MatrixOp.multiplyMatrix(MatrixOp.inversAdj(mOri), mHasil);
+            mOut = MatrixOp.multiplyMatrix(MatrixOp.inversId(mOri), mHasil);
             if (out == true) {
                 for (i = 0; i < mOut.getRow(); i++) {
                     System.out.printf("x%d = %.2f\n", (i + 1),(mOut.getElmt(i, 0)));

@@ -185,6 +185,7 @@ public class Parser {
                 writer.println(textline);
             }
             writer.close();
+            System.out.println("File berhasil tersimpan!");
         } catch (FileNotFoundException e) {
             System.out.println("File tidak dapat disimpan");
         }
@@ -204,20 +205,6 @@ public class Parser {
 
      // PROCEDURE
     // Melakukan print matriks
-    public void printMatrix(Matrix m) {
-        for (int i = 0; i < m.getRow(); i++) {
-            System.out.print("[");
-            for (int j = 0; j < m.getCol(); j++) {
-                if (j == m.getCol() - 1) {
-                    System.out.printf("%.2f", m.getElmt(i, j));
-                } else {
-                    System.out.printf("%.2f", m.getElmt(i, j));
-                    System.out.print(",");
-                }
-            }
-            System.out.println("]");
-        }
-    }
     
     public static Matrix inputMatrix() {
         Matrix hasil = new Matrix(20, 20);
