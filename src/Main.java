@@ -53,6 +53,7 @@ public class Main {
             switch (input) {
                 case 1:
                     m = Parser.input(false);
+                    SolveSPL.SPLGaussMethod(m);
                     run = false;
                     break;
                 case 2:
