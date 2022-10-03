@@ -17,6 +17,7 @@ public class Main {
         System.out.println("5. Interpolasi Bicubic");
         System.out.println("6. Regresi Linear Berganda");
         System.out.println("7. Exit Program");
+        System.out.println("8. Scaling Image");
     }
 
     public static void subMenuSPL() {
@@ -288,7 +289,7 @@ public class Main {
                     run = false;
                     break;
                 case 8:
-                    System.out.println("============= BICUBIC MENU =============");
+                    System.out.println("============= SCALING MENU =============");
                     ScaleImage.Scaling();
                     break;
                 default:
