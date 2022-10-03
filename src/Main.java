@@ -287,6 +287,10 @@ public class Main {
                 case 7:
                     run = false;
                     break;
+                case 8:
+                    System.out.println("============= BICUBIC MENU =============");
+                    ScaleImage.Scaling();
+                    break;
                 default:
                     System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
             }
