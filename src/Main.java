@@ -168,8 +168,8 @@ public class Main {
     public static void interpolasiMenu() throws IOException {
         System.out.println("============= POLINOM INTERPOLATION MENU =============");
         m = Parser.input(false);
+        int input;
         Matrix mAugmented = Polinom.matrixGenerator(m);
-        int tes;
         double hasil;
         boolean run = true;
         while (run){
@@ -181,20 +181,17 @@ public class Main {
             System.out.println("1. Ya");
             System.out.println("2. Tidak");
             System.out.print("Masukkan angka menu(1-2): ");
-            // sc.hasNext();
-            Scanner scanElmt = new Scanner(System.in);
-            tes = scanElmt.nextInt();
-            scanElmt.close();
-
-            switch (tes) {
+            input = sc.nextInt();
+            switch (input) {
                 case 1:
                     continue;
                 case 2:
                     run = false;
                     break;
                 default:
-                    System.out.println("Input " + tes + " tidak valid. Silahkan masukan input yang valid.");
+                    System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
             }
+
         }
     }
     
