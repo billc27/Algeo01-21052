@@ -26,6 +26,7 @@ public class SolveSPL {
         } else {
             boolean out = Parser.printMethod();
             mOut = MatrixOp.multiplyMatrix(MatrixOp.inversId(mOri), mHasil);
+            mOut.displayMatrix();
             if (out == true) {
                 for (i = 0; i < mOut.getRow(); i++) {
                     System.out.printf("x%d = %.2f\n", (i + 1),(mOut.getElmt(i, 0)));

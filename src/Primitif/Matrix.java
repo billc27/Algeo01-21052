@@ -124,27 +124,6 @@ public class Matrix {
         this.matrix[i][j] = val;
     }
     
-    // ngeprint kolom / baris tertentu
-    public void getCol(int i) {
-        int j;
-        for (j = 0; j < this.cols; j++) {
-            if (j < (this.cols-1)) {
-                System.out.print(getElmt(i, j) + " ");
-            } else {
-                System.out.print(getElmt(i, j));
-            }
-            
-        }
-        System.out.println();
-    }
-    
-    public void getRow(int j) {
-        int i;
-        for (i = 0; i < this.rows; i++) {
-            System.out.println(getElmt(i, j));
-        }
-    }
-
     // *********************** Identitas *************************
     // cek apakah baris adalah baris 0
     public boolean isRowZero(int idxRow) {
@@ -248,21 +227,6 @@ public class Matrix {
         return m;
     }
     
-    public boolean isSegitigaAtas() {
-        int i, j;
-        boolean val;
-        val = true;
-        if (this.rows == 1 || this.cols == 1) {
-            val = false;
-        } else {
-            for (i = 1; i < this.rows; i++) {
-                for (j = 0; j < i; j++) {
-                    if (this.matrix[i][j] != 0) val = false;
-                }
-            }
-        }
-        return val;
-    }
     
     public Matrix extendMatrix(Matrix m1, Matrix m2) {
         Matrix m3;

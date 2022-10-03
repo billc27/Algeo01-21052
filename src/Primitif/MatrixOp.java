@@ -34,7 +34,7 @@ public class MatrixOp {
         int m;
         double det;
         Matrix mTemp = new Matrix(M.rows - 1, M.cols - 1);
-        
+
         sign = 1;
         det = 0;
         if (M.rows != 1) {
@@ -149,24 +149,6 @@ public class MatrixOp {
     }
          
     // ************************* Operasi Lain ***************************
-    public static Matrix plusminusMatrix(Matrix m1, Matrix m2, boolean value) {
-        int i, j;
-        Matrix mOut  = new Matrix(m1.rows, m1.cols);
-        if (value) {
-            for (i = 0; i < mOut.rows; i++) {
-                for(j = 0; j < mOut.cols; j++) {
-                    mOut.matrix[i][j] = m1.matrix[i][j] + m2.matrix[i][j];
-                }
-            } 
-        } else {
-            for (i = 0; i < mOut.rows; i++) {
-                for(j = 0; j < mOut.cols; j++) {
-                    mOut.matrix[i][j] = m1.matrix[i][j] - m2.matrix[i][j];
-                }
-            }
-        }
-        return mOut;
-    }
 
     public static Matrix multiplyMatrix(Matrix m1, Matrix m2) {
         Matrix mOut = new Matrix(m1.rows, m2.cols);
