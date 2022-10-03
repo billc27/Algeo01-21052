@@ -23,13 +23,8 @@ public class SolveSPL {
         }
         }
     }
-<<<<<<< Updated upstream
 
     public static void SPLGaussJordanMethod(Matrix m){
-=======
-    
-    public static void SPLGaussJordanMethod(Matrix m) throws IOException{
->>>>>>> Stashed changes
         Matrix m1 = OBE.gaussJordan(m);
 
         int i, j, a, b;
@@ -153,18 +148,18 @@ public class SolveSPL {
             det1 = 1;
             if(det==0){
             System.out.println("Determinan matriks bernilai 0 sehingga tidak dapat menggunakan kaidah Cramer.");
-        } else{ //solusi unik
-                for(i=0; i<m.getCol()-1; i++){
-                    m1.swapCol(i, m.getCol()-1);
-                    det1 = OBE.detOBE(m1);
-                    System.out.print("x"+ (i+1) + " = ");
-                    System.err.printf("%.2f", det1/det);
-                    System.out.println();
-                    str.append("x"+ (i+1) + " = " + String.format("%.2f",det1/det)+"\n");                
-                    m1 = m.copyMatrix();
-                }
-                Parser.printMatrixtoFile(str.toString());
-        }
+            } else{ //solusi unik
+                    for(i=0; i<m.getCol()-1; i++){
+                        m1.swapCol(i, m.getCol()-1);
+                        det1 = OBE.detOBE(m1);
+                        System.out.print("x"+ (i+1) + " = ");
+                        System.err.printf("%.2f", det1/det);
+                        System.out.println();
+                        str.append("x"+ (i+1) + " = " + String.format("%.2f",det1/det)+"\n");                
+                        m1 = m.copyMatrix();
+                    }
+                    Parser.printMatrixtoFile(str.toString());
+            }
         }
     }
 }

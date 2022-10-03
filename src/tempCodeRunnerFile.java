@@ -1,0 +1,2 @@
+        SPLmenu();
+        detMenu();

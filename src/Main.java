@@ -36,8 +36,6 @@ public class Main {
         System.out.println("1. Metode Adjoint");
         System.out.println("2. Metode Identitas/Gauss");
     }
-<<<<<<< Updated upstream
-=======
     // ***************************** TAMPILAN PER MENU *****************************
 
     public static void SPLmenu() throws IOException {
@@ -236,5 +234,4 @@ public class Main {
         // detMenu();
         interpolasiMenu();
     }   
->>>>>>> Stashed changes
 }
