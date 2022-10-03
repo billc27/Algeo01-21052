@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 import java.lang.Math;
+import java.text.Format;
+
 import IO.*;
 import Primitif.*;
 
@@ -180,6 +182,7 @@ public class Main {
         m = Parser.input(false);
         Matrix mAugmented = Polinom.matrixGenerator(m);
         double hasil;
+        final StringBuffer str = new StringBuffer();
         
         boolean run = true;
         int input;
@@ -187,6 +190,8 @@ public class Main {
         while (run){
             hasil = Polinom.polinomInterpolation(mAugmented);
             System.out.printf("f(x) = %.2f\n", hasil);
+            str.append(String.format("f(x) = %.2f\n", hasil));
+            Parser.printMatrixtoFile(str.toString());
             System.out.println("Apakah ingin mengecek hasil taksiran fungsi lain?");
             System.out.println("1. Ya");
             System.out.println("2. Tidak");
@@ -211,6 +216,7 @@ public class Main {
         m = Parser.input(true);
         int input;
         double hasil, x, y;
+        final StringBuffer str = new StringBuffer();
         boolean run = true;
         System.out.println("Taksir nilai Fungsi");
         while (run) {
@@ -221,6 +227,7 @@ public class Main {
 
             hasil = Bicubic.bicubic(m, x, y);
             System.out.printf("Hasil f(%.2f ,%.2f) = %.2f\n", x, y, hasil);
+            str.append("Hasil f("+String.format("%.2f", x)+" ,"+String.format("%.2f", y)+") = "+String.format("%.2f", hasil)+"\n");
             System.out.println("Apakah ingin mengecek hasil taksiran fungsi lain?");
             System.out.println("1. Ya");
             System.out.println("2. Tidak");
@@ -236,6 +243,7 @@ public class Main {
                     System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
             }
         }
+        Parser.printMatrixtoFile(str.toString());
         System.out.println("------------------------------------------");
     }
     

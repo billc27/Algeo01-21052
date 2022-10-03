@@ -15,11 +15,11 @@ public class Parser {
         boolean run = true;
         int row, col;
         Matrix m = new Matrix(0, 0);
-
+        sc.nextLine();
         while (run) {
             System.out.println("============== READ FILE ===============");
             System.out.print("Masukkan nama file lengkap dgn .txt = ");
-            sc.nextLine();
+            // sc.nextLine();
             fileName = sc.nextLine();
             filePath = getPathInput(fileName);
             File file = new File(filePath);
@@ -61,7 +61,7 @@ public class Parser {
 
         while (run) {
             System.out.println("============== READ FILE ===============");
-            System.out.print("Masukkan nama file lengkap dgn .txt = ");
+            System.out.print("Masukkan nama file lengkap dengan .txt = ");
             fileName = sc.nextLine();
             filePath = getPathInput(fileName);
             File file = new File(filePath);
@@ -298,7 +298,6 @@ public class Parser {
     public static void printMatrixtoFile(String hasil) throws IOException{
         String filePath,fileName;
         boolean run = true;
-
         while (run) {
             System.out.print("Masukkan nama file hasil, lengkap dgn .txt = ");
             sc.nextLine();

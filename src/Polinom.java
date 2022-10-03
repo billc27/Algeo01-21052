@@ -1,7 +1,8 @@
+import java.io.IOException;
 import java.util.Scanner;
-
 import Primitif.Matrix;
 import Primitif.OBE;
+import IO.*;
 
 
 public class Polinom {
@@ -33,29 +34,33 @@ public class Polinom {
         return m;
     }
 
-    public static double polinomInterpolation(Matrix m){
+    public static double polinomInterpolation(Matrix m) throws IOException{
         int i;
         double x;
         double hasil, xPangkat;
-        // final StringBuffer str = new StringBuffer();
+        final StringBuffer str = new StringBuffer();
         
         // m.readMatrix(m.getRow(), m.getCol());
         // m.displayMatrix();
         OBE.toReducedEchelon(m);
         
         System.out.print("f(x) = ");
+        str.append("f(x) = ");
         for(i=0; i<m.getRow(); i++){  
             if(i==0){
                 System.out.print(m.getElmt(i, m.getCol()-1));
+                // str.append(m.getElmt(i, m.getCol()-1));
             } else if (m.getElmt(i, m.getCol()-1)>=0){
                 System.out.print(" + " + m.getElmt(i, m.getCol()-1) + "x^" + i);
+                // str.append(" + " + m.getElmt(i, m.getCol()-1) + "x^" + i);
             } else {
                 System.out.print(" - " + -1*m.getElmt(i, m.getCol()-1) + "x^" + i);
+                // str.append(" - " + -1*m.getElmt(i, m.getCol()-1) + "x^" + i);
             }
         }
         System.out.println();
         
-        System.out.println("Taksir nilai Fungsi");
+        System.out.println("Taksir nilai fungsi");
         System.out.print("Masukkan nilai x: ");
         
         Scanner scanElmt = new Scanner(System.in);
@@ -66,7 +71,7 @@ public class Polinom {
             hasil = hasil + m.getElmt(i, m.getCol()-1)*xPangkat;
             xPangkat = xPangkat*x;
         }
-
+        // Parser.printMatrixtoFile(str.toString());
         return hasil;
     }
 }

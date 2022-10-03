@@ -26,7 +26,6 @@ public class SolveSPL {
         } else {
             boolean out = Parser.printMethod();
             mOut = MatrixOp.multiplyMatrix(MatrixOp.inversId(mOri), mHasil);
-            mOut.displayMatrix();
             if (out == true) {
                 for (i = 0; i < mOut.getRow(); i++) {
                     System.out.printf("x%d = %.2f\n", (i + 1),(mOut.getElmt(i, 0)));
@@ -79,16 +78,16 @@ public class SolveSPL {
         if (nosolution){
             System.out.println("Tidak ada solusi.");
         } else { // solusi unik atau solusi banyak
-            if(selisih == 0){ // solusi unik
-                for (i = 0; i < col; i++) {
-                    System.out.printf("x%d = %.2f\n", (i + 1),m1.getElmt(i, m1.getCol()-1));
-                    // System.out.print("x" + (i + 1) + " = " );
-                    // System.out.printf(".2f",(m1.getElmt(i, m1.getCol()-1)));
-                    // System.out.println();
-                    str.append("x" + (i + 1) + " = " + String.format("%.2f",m1.getElmt(i, m1.getCol()-1)) + "\n");
-                }
-                Parser.printMatrixtoFile(str.toString());
-            } else {  
+            // if(selisih == 0){ // solusi unik
+            //     for (i = 0; i < col; i++) {
+            //         System.out.printf("x%d = %.2f\n", (i + 1),m1.getElmt(i, m1.getCol()-1));
+            //         // System.out.print("x" + (i + 1) + " = " );
+            //         // System.out.printf(".2f",(m1.getElmt(i, m1.getCol()-1)));
+            //         // System.out.println();
+            //         str.append("x" + (i + 1) + " = " + String.format("%.2f",m1.getElmt(i, m1.getCol()-1)) + "\n");
+            //     }
+            //     Parser.printMatrixtoFile(str.toString());
+            // } else {  
                 for (j = 0; j < m1.getCol()-1; j++){
                     System.out.print("x" + (j + 1) + " = ");
                     str.append("x" + (j + 1) + " = ");
@@ -113,21 +112,21 @@ public class SolveSPL {
                                     str.append("\n");
                                 } else { // apabila leading one
                                     if(m1.getElmt(i, m1.getCol()-1)!=0){
-                                        System.out.print(m1.getElmt(i, m1.getCol()-1));
-                                        str.append(m1.getElmt(i, m1.getCol()-1));
+                                        System.out.print(String.format("%.2f", m1.getElmt(i, m1.getCol()-1)));
+                                        str.append(String.format("%.2f", m1.getElmt(i, m1.getCol()-1)));
                                     }
                                      // iterasi untuk mencari variabel lainnya di baris i
                                     for(a = b+1; a < m1.getCol()-1; a++){
                                         if(m1.getElmt(i, a)>0){
-                                            System.out.print(" - " + m1.getElmt(i, a)+"x"+(a+1));
-                                            str.append(" - " + m1.getElmt(i, a)+ "x" +(a+1));
+                                            System.out.print(" - " + String.format("%.2f", m1.getElmt(i, a))+"x"+(a+1));
+                                            str.append(" - " + String.format("%.2f", m1.getElmt(i, a))+ "x" +(a+1));
 
                                         } else if (m1.getElmt(i, a)<0 && m1.getElmt(i, m1.getCol()-1)!=0){
-                                            System.out.print(" + " + -1*m1.getElmt(i, a) + "x" +(a+1));
-                                            str.append(" + " + -1*m1.getElmt(i, a) + "x" +(a+1));
+                                            System.out.print(" + " + String.format("%.2f", (-1*m1.getElmt(i, a))) + "x" +(a+1));
+                                            str.append(" + " + String.format("%.2f", (-1*m1.getElmt(i, a))) + "x" +(a+1));
                                         } else if(m1.getElmt(i, a)<0 && m1.getElmt(i, m1.getCol()-1)==0){
-                                            System.out.print(""+ -1*m1.getElmt(i, a) + "x" +(a+1));
-                                            str.append(""+ -1*m1.getElmt(i, a) + "x" +(a+1));
+                                            System.out.print(""+ String.format("%.2f", (-1*m1.getElmt(i, a))) + "x" +(a+1));
+                                            str.append(""+ String.format("%.2f", (-1*m1.getElmt(i, a))) + "x" +(a+1));
                                         }
                                     }
                                     System.out.println();
@@ -139,7 +138,7 @@ public class SolveSPL {
                     }
                 }
                 Parser.printMatrixtoFile(str.toString());
-            }
+            // }
         }
 
 
