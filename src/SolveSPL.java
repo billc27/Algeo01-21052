@@ -18,8 +18,10 @@ public class SolveSPL {
         // Matrix inv = Matrix.inversAdj();
         int i;
         Matrix mOut = new Matrix(m.getRow(), 1);
-
-        if (MatrixOp.inversId(mOri) == null) {
+        if (mOri.isSquare()==false){
+            System.out.println("Matriks Original bukan matriks Persegi");
+        }
+        else if (MatrixOp.inversId(mOri) == null) {
             System.out.println("Matriks tidak memiliki balikan");
         } else {
             boolean out = Parser.printMethod();
