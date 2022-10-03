@@ -78,7 +78,7 @@ public class Main {
 
     public static void invMenu() throws IOException {
         subMenuInv();
-        int input, i, j;
+        int input;
         boolean run = true;
         Matrix m = new Matrix(20, 20), mOut = new Matrix(20, 20);
         while (run) {
@@ -128,12 +128,10 @@ public class Main {
     
     public static void detMenu() throws IOException {
         String temp;
-        String fileName, filePath;
         subMenuDet();
-        int input, i, j;
-        Scanner scanData = new Scanner(System.in);
+        int input;
         boolean run = true;
-        Matrix m = new Matrix(20, 20), mOut = new Matrix(20, 20);
+        Matrix m = new Matrix(20, 20);
         while (run) {
             System.out.print("Masukkan angka menu(1-2): ");
             input = sc.nextInt();
@@ -168,31 +166,13 @@ public class Main {
     public static void interpolasiMenu() throws IOException {
         System.out.println("============= POLINOM INTERPOLATION MENU =============");
         m = Parser.input(false);
-        int input;
         Matrix mAugmented = Polinom.matrixGenerator(m);
         double hasil;
-        boolean run = true;
-        while (run){
-            hasil = Polinom.polinomInterpolation(mAugmented);
-            System.out.printf("y = %.2f\n", hasil);
-            // System.out.printf("%.2f", hasil);
-            // str.append("y = " + String.format("%.2f", hasil));
-            System.out.println("Apakah ingin mengecek hasil taksiran fungsi lain?");
-            System.out.println("1. Ya");
-            System.out.println("2. Tidak");
-            System.out.print("Masukkan angka menu(1-2): ");
-            input = sc.nextInt();
-            switch (input) {
-                case 1:
-                    continue;
-                case 2:
-                    run = false;
-                    break;
-                default:
-                    System.out.println("Input " + input + " tidak valid. Silahkan masukan input yang valid.");
-            }
+        hasil = Polinom.polinomInterpolation(mAugmented);
 
-        }
+        System.out.printf("y = %.2f\n", hasil);
+        System.out.println("------------------------------------------");
+        
     }
     
     public static void bicubicMenu() throws IOException {
