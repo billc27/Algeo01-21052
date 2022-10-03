@@ -10,7 +10,7 @@ The contributors of this project are:
 
 ## Features
 - Solving system of linear equations using the Gauss Elimination, Gauss-Jordan Elimination, Inverse, and Cramer method
-- Generating the inverse of a matrix
+- Generating the inverse of a matrix using the Gauss-Jordan Elimination and Adjoint method
 - Generating the determinant of a matrix using the Cofactor Expansion and Inverse method
 - Solving polynomial interpolation problems
 - Solving bicubic interpolation problems
