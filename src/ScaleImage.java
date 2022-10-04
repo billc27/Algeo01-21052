@@ -31,6 +31,35 @@ public class ScaleImage {
                     imgTemp.setRGB(i + 2, j + 2, img.getRGB(i, j));
                 }
             }
+            for (i = 0; i < w+4; i++) {
+                for (j = 0; j < h+4; j++) {
+                    if (i==1 && j >1 && j<h+3){ 
+                        imgTemp.setRGB(i , j, imgTemp.getRGB(i+1, j));
+                    }else if (i==1 && j==1){
+                        imgTemp.setRGB(i , j, imgTemp.getRGB(i+1, j+1));
+                    }else if (i>w+2 && j >1 && j<h+3){
+                        imgTemp.setRGB(i , j, imgTemp.getRGB(i-1, j));
+                    }else if (i==w+3 && j==1){
+                        imgTemp.setRGB(i , j, imgTemp.getRGB(i-1, j+1));
+                    }
+                    else if (i==1 && j ==h+3){
+                        imgTemp.setRGB(i , j, imgTemp.getRGB(i+1, j-1));
+                    }else if (i==1 && j == h+4){
+                        imgTemp.setRGB(i , j, imgTemp.getRGB(i+1, j-2));
+                    }else if (i>1 && j==1 && i<w+3){
+                        imgTemp.setRGB(i , j, imgTemp.getRGB(i, j+1));
+                    }else if (i==w+3 && j ==h+3){
+                        imgTemp.setRGB(i , j, imgTemp.getRGB(i-1, j-1));
+                    }else if (i==w+3 && j ==h+4){
+                        imgTemp.setRGB(i , j, imgTemp.getRGB(i-1, j-2));
+                    }else if (i==w+4 && j>0){
+                        imgTemp.setRGB(i , j, imgTemp.getRGB(i-1, j));
+                    }
+                    else if (i>1 && j==h+4){
+                        imgTemp.setRGB(i , j, imgTemp.getRGB(i, j-1));
+                    }
+                }
+            }
 
             for (i = 0; i < w; i++) {
                 for (j = 0; j < h; j++) {
@@ -81,7 +110,6 @@ public class ScaleImage {
     public static String imagePath (String fileName){
         String filePath, currentPath;
         currentPath = System.getProperty("user.dir");
-        System.out.println(currentPath);
         if (currentPath.contains("src")){
             filePath = currentPath+"\\Bonus\\"+ fileName;
         } else {
@@ -107,5 +135,8 @@ public class ScaleImage {
 
     public static int rgbGreen (int pixel){
         return (pixel >> 8) & 0xff;
+    }
+    public static void main(String[] args) throws IOException {
+        Scaling();
     }
 }
